@@ -1,0 +1,48 @@
+<resources>
+
+    <string name="app_name">MagnaApp</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="conf_psw">Confirm Password</string>
+    <string name="sfondo_up">sfondo_up</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="signup">Signup</string>
+    <string name="nulla">nulla</string>
+    <string name="welcome">Welcome</string>
+    <string name="home">Home</string>
+    <string name="menu">Menu</string>
+    <string name="past_orders">Past orders</string>
+    <string name="setting">Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="storage">Storage</string>
+
+    <string-array name="storage">
+        <item>Frigo</item>
+        <item>Congelatore</item>
+        <item>Dispensa</item>
+        <item>Sala</item>
+    </string-array>
+
+    <string-array name="menuList">
+        <item>Antipasti</item>
+        <item>Primi</item>
+        <item>Secondi</item>
+        <item>Contorni</item>
+        <item>Pizze</item>
+        <item>Bevande</item>
+        <item>Dolci</item>
+        <item>Caffetteria_Liquori</item>
+    </string-array>
+
+    <string-array name="pastOrders">
+        <item>Ultimo</item>
+        <item>Penultimo</item>
+        <item>Terzultimo</item>
+        <item>…</item>
+        <item>Primo</item>
+    </string-array>
+
+</resources>
