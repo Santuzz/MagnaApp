@@ -35,7 +35,7 @@
                 app:srcCompat="@drawable/recycler_row" />
 
             <TextView
-                android:id="@+id/TextView"
+                android:id="@+id/TextViewRV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tipo di piatto"
