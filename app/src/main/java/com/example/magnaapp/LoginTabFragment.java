@@ -41,7 +41,7 @@ public class LoginTabFragment extends Fragment {
                 String strUsername = username.getText().toString();
                 String strPassword = password.getText().toString();
 
-                if(strUsername.equals("Santuzz") && strPassword.equals("ciao")){
+                if(strUsername.equals("") && strPassword.equals("")){
                     //TODO: apri l'activity del menu
                     Intent intent = new Intent(getActivity(), MenuActivity.class);
                     startActivity(intent);

@@ -16,10 +16,12 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_menu);
+
         setContentView(binding.getRoot());
 
-        replaceFragment(new StorageFragment());
+        new MenuFragment();
 
         binding.bottomNavigationBar.setOnClickListener(item -> {
             switch(item.getId()){
@@ -38,6 +40,7 @@ public class MenuActivity extends AppCompatActivity {
             }
 
         });
+
     }
 
     public void replaceFragment(Fragment fragment){
@@ -46,4 +49,5 @@ public class MenuActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
+
 }
