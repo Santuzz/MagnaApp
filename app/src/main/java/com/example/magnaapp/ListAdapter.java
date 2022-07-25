@@ -8,21 +8,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
+
     String[] list;
-public ListAdapter(String[] list){
-    this.list = list;
-}
+
+    public ListAdapter(String[] list) {
+        this.list = list;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_row, parent, false));
+        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(list[position]);
+
     }
 
     @Override
@@ -33,9 +36,10 @@ public ListAdapter(String[] list){
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.TextViewRV);
+            textView = itemView.findViewById(R.id.textView);
         }
     }
 }
+

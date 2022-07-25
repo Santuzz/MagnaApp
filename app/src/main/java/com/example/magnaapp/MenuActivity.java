@@ -1,53 +1,27 @@
 package com.example.magnaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 
-import com.example.magnaapp.databinding.ActivityMenuBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MenuActivity extends AppCompatActivity {
-
-    ActivityMenuBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_menu);
 
-        setContentView(binding.getRoot());
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        new MenuFragment();
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
+        NavController navController = navHostFragment.getNavController();
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        binding.bottomNavigationBar.setOnClickListener(item -> {
-            switch(item.getId()){
-                case R.id.storage:
-                    replaceFragment(new StorageFragment());
-                    break;
-                case R.id.menu:
-                    replaceFragment(new MenuFragment());
-                    break;
-                case R.id.past_orders:
-                    replaceFragment(new PastOrdersFragment());
-                    break;
-                case R.id.settings:
-                    replaceFragment(new SettingsFragment());
-                    break;
-            }
-
-        });
 
     }
-
-    public void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
-    }
-
 }

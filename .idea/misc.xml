@@ -16,10 +16,19 @@
         <entry key="app/src/main/res/layout/fragment_past_orders.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_storage.xml" value="0.29583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_test.xml" value="0.29583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_test1.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/fragment_test2.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/fragment_test3.xml" value="0.2947916666666667" />
+        <entry key="app/src/main/res/layout/fragment_test4.xml" value="0.2947916666666667" />
         <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.2190158471128994" />
+        <entry key="app/src/main/res/layout/recycler_row.xml" value="0.29025641025641025" />
         <entry key="app/src/main/res/layout/recycler_view_row.xml" value="0.30885416666666665" />
         <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/test_row.xml" value="0.29375" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/my_bottom_nav.xml" value="0.14010416666666667" />
+        <entry key="app/src/main/res/menu/test_nav_menu.xml" value="0.29375" />
       </map>
     </option>
   </component>

@@ -19,7 +19,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="storage">Storage</string>
 
-    <string-array name="storage">
+    <string-array name="storageList">
         <item>Frigo</item>
         <item>Congelatore</item>
         <item>Dispensa</item>
@@ -34,10 +34,10 @@
         <item>Pizze</item>
         <item>Bevande</item>
         <item>Dolci</item>
-        <item>Caffetteria_Liquori</item>
+        <item>Caffetteria</item>
     </string-array>
 
-    <string-array name="pastOrders">
+    <string-array name="pastOrdersList">
         <item>Ultimo</item>
         <item>Penultimo</item>
         <item>Terzultimo</item>

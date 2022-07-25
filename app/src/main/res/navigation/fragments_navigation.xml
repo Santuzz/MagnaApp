@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragments_navigation"
+    app:startDestination="@id/storageFragment">
+    <fragment
+        android:id="@+id/storageFragment"
+        android:name="com.example.magnaapp.StorageFragment"
+        android:label="fragment_storage"
+        tools:layout="@layout/fragment_storage" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.magnaapp.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/pastOrdersFragment"
+        android:name="com.example.magnaapp.PastOrdersFragment"
+        android:label="fragment_past_orders"
+        tools:layout="@layout/fragment_past_orders" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.magnaapp.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
