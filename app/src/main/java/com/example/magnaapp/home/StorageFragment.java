@@ -1,4 +1,4 @@
-package com.example.magnaapp;
+package com.example.magnaapp.home;
 
 import android.os.Bundle;
 
@@ -10,19 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.magnaapp.R;
 
-public class PastOrdersFragment extends Fragment {
+
+public class StorageFragment extends Fragment {
+
     RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_past_orders, container, false);
+        View view = (View) inflater.inflate(R.layout.fragment_storage, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewPastOrder);
+        recyclerView = view.findViewById(R.id.recyclerViewStorage);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(new ListAdapter(getResources().getStringArray(R.array.pastOrdersList)));
+        recyclerView.setAdapter(new ListAdapter(getResources().getStringArray(R.array.storageList)));
+
         return view;
     }
 }

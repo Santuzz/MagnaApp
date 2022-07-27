@@ -1,4 +1,4 @@
-package com.example.magnaapp;
+package com.example.magnaapp.login;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
