@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragments_navigation"
-    app:startDestination="@id/storageFragment">
+    app:startDestination="@id/shoppingFragment">
     <fragment
-        android:id="@+id/storageFragment"
-        android:name="com.example.magnaapp.home.StorageFragment"
+        android:id="@+id/shoppingFragment"
+        android:name="com.example.magnaapp.home.ShoppingFragment"
         android:label="fragment_storage"
-        tools:layout="@layout/fragment_storage" />
+        tools:layout="@layout/fragment_shopping" />
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.magnaapp.home.MenuFragment"

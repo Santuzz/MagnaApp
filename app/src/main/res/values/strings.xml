@@ -18,6 +18,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="storage">Storage</string>
+    <string name="tipo_di_piatto">Tipo di piatto</string>
+    <string name="shopping_cart">Shopping Cart</string>
 
     <string-array name="storageList">
         <item>Frigo</item>

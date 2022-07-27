@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.example.magnaapp.R;
 
 
-public class StorageFragment extends Fragment {
+public class ShoppingFragment extends Fragment {
 
     RecyclerView recyclerView;
 
@@ -21,7 +21,7 @@ public class StorageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = (View) inflater.inflate(R.layout.fragment_storage, container, false);
+        View view = (View) inflater.inflate(R.layout.fragment_shopping, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewStorage);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
