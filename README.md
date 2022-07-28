@@ -13,7 +13,7 @@ Le due tab di login e signup sono state messe all'interno di un *tabLayout*.
 
 Una volta eseguito il login si accede a quella che è l'activity principale dell'applicazione.
 
-### MenuActivity
+### MenuActivity 
 
 <img src="/images/MenuActivity.png" alt="drawing" width="200"/>
 
