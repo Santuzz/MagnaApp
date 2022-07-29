@@ -31,7 +31,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/login" />
+                    android:src="@drawable/login"
+                    tools:ignore="contentDescription"/>
             </androidx.cardview.widget.CardView>
 
         </FrameLayout>
@@ -53,27 +54,28 @@
 
         </LinearLayout>
     </LinearLayout>
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:tabIndicatorColor="@color/blue_600"
+
+        >
+
+
+        <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:tabIndicatorColor="@color/blue_600"
+            android:text="@string/login" />
 
-            >
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/signup" />
 
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/login"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/signup" />
-
-        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
 
 
