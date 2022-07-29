@@ -89,7 +89,8 @@
             android:layout_marginTop="22dp">
 
             <EditText
-                android:id="@+id/editTextTextPassword"                android:layout_width="match_parent"
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/password_icon"
                 android:autofillHints="@string/password"
@@ -170,3 +171,5 @@
 
     </LinearLayout>
 </RelativeLayout>
+
+    <!--TODO AGGIUSTARE SCROLL CONFERMA PASSWORD IN SIGNUP-->

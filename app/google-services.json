@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "237100792053",
+    "project_id": "slackntos",
+    "storage_bucket": "slackntos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:237100792053:android:6d94277bdd3ea7d36b6dbc",
+        "android_client_info": {
+          "package_name": "com.example.magnaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "237100792053-cr9rc4vi2g5htj617vdllc7leq3468e5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiCcVjttZ6dJNfkKHamJao254L99h8NNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "237100792053-cr9rc4vi2g5htj617vdllc7leq3468e5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
