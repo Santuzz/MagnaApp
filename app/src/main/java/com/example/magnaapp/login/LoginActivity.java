@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.viewPager2);
-        textWelcome = findViewById(R.id.textWelcome);
 
 
         final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), getLifecycle());

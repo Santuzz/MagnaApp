@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/activity_bg.xml" value="0.1" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/blue_border.xml" value="0.139" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/blue_border_rounded_cornwe.xml" value="0.1735" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/bluebox.xml" value="0.1" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/button_bg.xml" value="0.1" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/edit_text_bg.xml" value="0.2055" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/drawable/vie_bg.xml" value="0.1995" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/font/quicksand_bold.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/activity_login.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/activity_menu.xml" value="0.1648148148148148" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/fragment_menu.xml" value="0.1648148148148148" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/fragment_past_orders.xml" value="0.25" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/fragment_settings.xml" value="0.1648148148148148" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/fragment_shopping.xml" value="0.1" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/login_tab_fragment.xml" value="0.1927710843373494" />
+        <entry key="..\:/Users/abref/Desktop/MagnaApp/app/src/main/res/layout/signup_tab_fragment.xml" value="0.33" />
         <entry key="app/src/main/res/drawable/activity_bg.xml" value="0.165" />
         <entry key="app/src/main/res/drawable/button_bg.xml" value="0.179" />
         <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.179" />
