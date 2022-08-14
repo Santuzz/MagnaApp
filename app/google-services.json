@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "237100792053",
-    "project_id": "slackntos",
-    "storage_bucket": "slackntos.appspot.com"
+    "project_number": "626804079360",
+    "project_id": "slackmagna",
+    "storage_bucket": "slackmagna.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:237100792053:android:6d94277bdd3ea7d36b6dbc",
+        "mobilesdk_app_id": "1:626804079360:android:1ecfbe67b85af6fadb91e5",
         "android_client_info": {
           "package_name": "com.example.magnaapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "237100792053-cr9rc4vi2g5htj617vdllc7leq3468e5.apps.googleusercontent.com",
+          "client_id": "626804079360-1pp3s229j2pdpeau1ilddif8345jqsjq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAiCcVjttZ6dJNfkKHamJao254L99h8NNw"
+          "current_key": "AIzaSyD9yFonEa86RzinydfSettztkICZ4DpMvU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "237100792053-cr9rc4vi2g5htj617vdllc7leq3468e5.apps.googleusercontent.com",
+              "client_id": "626804079360-1pp3s229j2pdpeau1ilddif8345jqsjq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
