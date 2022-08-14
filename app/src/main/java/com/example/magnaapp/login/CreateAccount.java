@@ -8,7 +8,7 @@ public class CreateAccount {
 
     }
 
-    public CreateAccount(String username, String password, String email){
+    public CreateAccount(String username, String email, String password){
         this.email=email;
         this.password=password;
         this.username=username ;

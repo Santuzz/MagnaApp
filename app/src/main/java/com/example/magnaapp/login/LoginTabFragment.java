@@ -28,14 +28,13 @@ public class LoginTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIstanceState) {
         View view = (View) inflater.inflate(R.layout.login_tab_fragment, container, false);
-        Activity activity = getActivity();
 
         username = view.findViewById(R.id.username);
         password = view.findViewById(R.id.password);
         forget_psw = view.findViewById(R.id.forget_psw);
         login = view.findViewById(R.id.login);
 
-        Toast.makeText(activity,"Benvenuto!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(),"Benvenuto!", Toast.LENGTH_SHORT).show();
 
         //TODO: comunicare con il DB per verificare l'esistenza dell'utente
         //TODO: aprire la nuova activity in cui poter ordinare

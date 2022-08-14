@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,61 +28,47 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import java.util.concurrent.Executor;
 
-public class SignupTabFragment extends Fragment implements Executor, View.OnClickListener {
+public class SignupTabFragment extends Fragment  implements Executor, View.OnClickListener {
 
+
+
+
+     private FirebaseAuth mAuth;
+     private EditText conf_psw,password,email,username,cof_psw;
+
+     private  AppCompatButton signup;
 
 
     private static final String TAG = "EmailPassword";
-    // [START declare_auth]
-    private FirebaseAuth mAuth;
-    // [END declare_auth]
-     EditText email;
-     EditText username;
-    private EditText password;
-    private TextView conf_psw;
-    private ImageView logo;
-    private AppCompatButton signup;
-    Activity activity=new Activity();
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIstanceState) {
+        Toast.makeText(getActivity(),"Registrati!", Toast.LENGTH_SHORT).show();
 
         View view = (View) inflater.inflate(R.layout.signup_tab_fragment, container, false);
-        // [START initialize_auth]
-        // Initialize Firebase Auth
+
         mAuth = FirebaseAuth.getInstance();
 
+
+        signup = view.findViewById(R.id.signup);
         email = view.findViewById(R.id.email);
         username = view.findViewById(R.id.username);
         password = view.findViewById(R.id.password);
-        conf_psw = view.findViewById(R.id.conf_psw);
+        conf_psw=view.findViewById(R.id.conf_psw);
         signup = view.findViewById(R.id.signup);
-
 
         signup.setOnClickListener(this);
 
         float v = 0;
 
-        // [END initialize_auth]
         return view;
 
     }
 
-    // [START on_start_check_user]
-  /*  @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            reload();
-        }
-    }
-    // [END on_start_check_user]
-*/
-    private void createAccount(String email, String password) {
+
+    private void createAccount(String username, String email,String password) {
         // [START create_user_with_email]
 
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -89,14 +76,36 @@ public class SignupTabFragment extends Fragment implements Executor, View.OnClic
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            CreateAccount createUser = new CreateAccount(username, email,password);
+                            System.out.println(createUser.email+createUser+username+createUser.password);
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                            .setValue(createUser).addOnCompleteListener( new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if(task.isSuccessful()) {
+                                                Log.d(TAG, "createUserWithEmail:success");
+                                                String user = mAuth.getCurrentUser().getUid();
+                                                Toast.makeText(getActivity(), "Registrazione completata!", Toast.LENGTH_SHORT).show();
+                                            }else{
+
+                                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                                Toast.makeText(getActivity(), "Registrazione fallita!",
+                                                        Toast.LENGTH_SHORT).show();
+
+                                            }
+                                            }
+                                    });
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(getActivity(), "Registrazione completata!", Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(activity, "Authentication failed.",
+                            Toast.makeText(getActivity(), "Registrazione fallita!",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -117,14 +126,44 @@ public class SignupTabFragment extends Fragment implements Executor, View.OnClic
 
     @Override
     public void onClick(View view) {
-        createAccount("BLACKStre2et@gmail.com","oaishdsad");
+        String email=this.email.getText().toString().trim();
+        String password=this.password.getText().toString().trim();
+        String username=this.username.getText().toString().trim();
+        String cnf_psw=this.conf_psw.getText().toString().trim();
+        if(email.isEmpty()){
+            Toast.makeText(getActivity(),"Inserisci un email valido!", Toast.LENGTH_SHORT).show();
 
+        }
+        else {
+            if(username.isEmpty()){
+                Toast.makeText(getActivity(),"Inserisci username!", Toast.LENGTH_SHORT).show();
+
+            }else {
+                if (password.isEmpty()) {
+                    Toast.makeText(getActivity(), "Inserisci password!", Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+                    if (cnf_psw.isEmpty()){
+                        Toast.makeText(getActivity(),"ripeti la password!", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        createAccount(username ,email,password);
+                    }
+                }
+            }
+
+
+
+
+        }
     }
 
     @Override
     public void execute(Runnable runnable) {
 
     }
+
 }
 /*
 

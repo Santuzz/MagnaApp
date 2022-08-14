@@ -13,7 +13,6 @@ public class LoginActivity extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager2 viewPager2;
-    TextView textWelcome;
 
     float v = 0;
 
