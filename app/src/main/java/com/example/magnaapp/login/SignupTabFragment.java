@@ -68,43 +68,20 @@ public class SignupTabFragment extends Fragment  implements Executor, View.OnCli
     }
 
 
-    private void createAccount(String username, String email,String password) {
+    private void createAccount(String username,String email, String password) {
         // [START create_user_with_email]
-
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            CreateAccount createUser = new CreateAccount(username, email,password);
-                            System.out.println(createUser.email+createUser+username+createUser.password);
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                            .setValue(createUser).addOnCompleteListener( new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-
-                                            if(task.isSuccessful()) {
-                                                Log.d(TAG, "createUserWithEmail:success");
-                                                String user = mAuth.getCurrentUser().getUid();
-                                                Toast.makeText(getActivity(), "Registrazione completata!", Toast.LENGTH_SHORT).show();
-                                            }else{
-
-                                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                                Toast.makeText(getActivity(), "Registrazione fallita!",
-                                                        Toast.LENGTH_SHORT).show();
-
-                                            }
-                                            }
-                                    });
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
+                            Toast.makeText(getActivity(), "Account creato con successo!",
+                                    Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getActivity(), "Registrazione completata!", Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(getActivity(), "Registrazione fallita!",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
@@ -113,7 +90,6 @@ public class SignupTabFragment extends Fragment  implements Executor, View.OnCli
                 });
         // [END create_user_with_email]
     }
-
 
 
 
@@ -145,10 +121,15 @@ public class SignupTabFragment extends Fragment  implements Executor, View.OnCli
                 }
                 else{
                     if (cnf_psw.isEmpty()){
-                        Toast.makeText(getActivity(),"ripeti la password!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"Ripeti la password!", Toast.LENGTH_SHORT).show();
 
-                    }else{
-                        createAccount(username ,email,password);
+                    }else {
+
+                        if (!cnf_psw.contentEquals(password)){
+                            Toast.makeText(getActivity(), "La password non combacia!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            createAccount(username,email,password);
+                        }
                     }
                 }
             }
