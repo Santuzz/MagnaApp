@@ -79,16 +79,24 @@ public class SignupTabFragment extends Fragment  implements Executor, View.OnCli
                             Toast.makeText(getActivity(), "Account creato con successo!",
                                     Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+
+                            System.out.println("CIAO PIPPO\n\n\n\n\n\n\n\n\n\n\n\n");
+                            Intent intent = new Intent(getActivity(), MenuActivity.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getActivity(), "Registrazione fallita!",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
                         }
                     }
                 });
         // [END create_user_with_email]
+
+        Toast.makeText(getActivity(), "Account creato con successo!",
+                Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getActivity(), MenuActivity.class);
+        startActivity(intent);
     }
 
 
