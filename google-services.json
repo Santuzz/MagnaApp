@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "626804079360",
+    "firebase_url": "https://slackmagna-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "slackmagna",
+    "storage_bucket": "slackmagna.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626804079360:android:1ecfbe67b85af6fadb91e5",
+        "android_client_info": {
+          "package_name": "com.example.magnaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626804079360-1pp3s229j2pdpeau1ilddif8345jqsjq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9yFonEa86RzinydfSettztkICZ4DpMvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626804079360-1pp3s229j2pdpeau1ilddif8345jqsjq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
