@@ -22,7 +22,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginTabFragment extends Fragment {
+import java.util.concurrent.Executor;
+
+public class LoginTabFragment extends Fragment  implements Executor, View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private EditText password,username,email;
@@ -38,8 +40,7 @@ public class LoginTabFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-        login = view.findViewById(R.id.signup);
+        login = view.findViewById(R.id.login);
         email = view.findViewById(R.id.email);
         username = view.findViewById(R.id.username);
         password = view.findViewById(R.id.password);
@@ -52,34 +53,44 @@ public class LoginTabFragment extends Fragment {
         return view;
 
     }
+    // [START on_start_check_user]
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            reload();
+        }
+    }
+    // [END on_start_check_user]
 
-
-    private void accedi(String username,String email, String password) {
+    private void accedi(String email, String password) {
         // [START create_user_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                    public void onComplete(@NonNull Task<AuthResult> taskLogIn) {
+                        if (taskLogIn.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(getActivity(), "Autenticazione fallita!",
-                                    Toast.LENGTH_SHORT).show();                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(getActivity(), "Bentornato!",
+                                    Toast.LENGTH_SHORT).show();
+                            FirebaseUser user= mAuth.getCurrentUser();
+                            updateUI(user);
 
+                            Intent intent = new Intent(getActivity(), MenuActivity.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getActivity(), "Autenticazione fallita!",
                                     Toast.LENGTH_SHORT).show();
+                            updateUI(null);
 
                         }
                     }
                 });
         // [END create_user_with_email]
 
-        Toast.makeText(getActivity(), "Account creato con successo!",
-                Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(getActivity(), MenuActivity.class);
-        startActivity(intent);
     }
 
 
@@ -93,12 +104,12 @@ public class LoginTabFragment extends Fragment {
 
     @Override
     public void onClick(View view) {
-        String email=this.email.getText().toString().trim();
+        String email=this.username.getText().toString().trim();
         String password=this.password.getText().toString().trim();
         String username=this.username.getText().toString().trim();
 
 
-            if(username.isEmpty()){
+            if(email.isEmpty()){
                 Toast.makeText(getActivity(),"Inserisci username!", Toast.LENGTH_SHORT).show();
 
             }else {
@@ -107,11 +118,11 @@ public class LoginTabFragment extends Fragment {
 
                 }
                 else{
-                            accedi(username,email,password);
+                            accedi(email,password);
                         }
                     }
                 }
-            }
+
 
 
 
