@@ -24,6 +24,8 @@
     <string name="storage">Storage</string>
     <string name="tipo_di_piatto">Tipo di piatto</string>
     <string name="shopping_cart">Shopping Cart</string>
+    <string name="Reset_psw">Reset Password</string>
+    <string name="cnf_email">Conferma Email</string>
 
     <string-array name="storageList">
         <item>Frigo</item>

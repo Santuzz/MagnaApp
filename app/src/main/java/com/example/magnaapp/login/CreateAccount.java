@@ -2,13 +2,13 @@ package com.example.magnaapp.login;
 
 public class CreateAccount {
 
-    public String username,password,email;
+    public String email,password,username;
 
     public CreateAccount(){
 
     }
 
-    public CreateAccount(String username, String email, String password){
+    public CreateAccount(String email, String password, String username){
         this.email=email;
         this.password=password;
         this.username=username ;

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "626804079360",
-    "firebase_url": "https://slackmagna-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "slackmagna",
-    "storage_bucket": "slackmagna.appspot.com"
+    "project_number": "781228226665",
+    "project_id": "magnalbase",
+    "firebaseurl": "https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app",
+    "storage_bucket": "magnalbase.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:626804079360:android:1ecfbe67b85af6fadb91e5",
+        "mobilesdk_app_id": "1:781228226665:android:74ec187a3a50e4bc9b4af8",
         "android_client_info": {
           "package_name": "com.example.magnaapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "626804079360-1pp3s229j2pdpeau1ilddif8345jqsjq.apps.googleusercontent.com",
+          "client_id": "781228226665-a3u170994q84hiivkeu5gs9anb8sne8p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD9yFonEa86RzinydfSettztkICZ4DpMvU"
+          "current_key": "AIzaSyBHV2K4an46qFYUCNSk2Xy7ZHGYirB7yCg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "626804079360-1pp3s229j2pdpeau1ilddif8345jqsjq.apps.googleusercontent.com",
+              "client_id": "781228226665-a3u170994q84hiivkeu5gs9anb8sne8p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
