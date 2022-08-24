@@ -92,6 +92,9 @@ public class SignupTabFragment extends Fragment  implements  View.OnClickListene
                                             if(task.isSuccessful()){
                                                 Toast.makeText(getActivity(), "Account creato con successo!",
                                                         Toast.LENGTH_SHORT).show();
+                                                //TODO ho utilizzato un nuovo intent per richiamare il login ma credo che ci sia un modo per richiamare il fragment login senza crearne un nuovo intent ma sono stanco pensaci tu
+                                                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                                                startActivity(intent);
                                             }else{
                                                 Toast.makeText(getActivity(), "Registrazione fallita!",
                                                         Toast.LENGTH_SHORT).show();
