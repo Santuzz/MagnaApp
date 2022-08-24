@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,11 +25,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.concurrent.Executor;
 
-public class LoginTabFragment extends Fragment  implements Executor, View.OnClickListener {
+public class LoginTabFragment extends Fragment  implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private EditText password,username,email;
-
+    private ImageButton google;
     private  AppCompatButton login;
 
     float v = 0;
@@ -44,6 +45,7 @@ public class LoginTabFragment extends Fragment  implements Executor, View.OnClic
         email = view.findViewById(R.id.email);
         username = view.findViewById(R.id.username);
         password = view.findViewById(R.id.password);
+        google = view.findViewById(R.id.google);
 
 
         login.setOnClickListener(this);
@@ -60,7 +62,11 @@ public class LoginTabFragment extends Fragment  implements Executor, View.OnClic
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            reload();
+
+            String Bentornato="Bentornato "+currentUser.getEmail().toString()+"\n\t\t\t\t\t\taccedi di nuovo!";
+            Toast.makeText(getActivity(),Bentornato ,Toast.LENGTH_LONG).show();
+            updateUI(null);
+
         }
     }
     // [END on_start_check_user]
@@ -68,13 +74,13 @@ public class LoginTabFragment extends Fragment  implements Executor, View.OnClic
     private void accedi(String email, String password) {
         // [START create_user_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> taskLogIn) {
                         if (taskLogIn.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getActivity(), "Bentornato!",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_LONG).show();
                             FirebaseUser user= mAuth.getCurrentUser();
                             updateUI(user);
 
@@ -82,7 +88,7 @@ public class LoginTabFragment extends Fragment  implements Executor, View.OnClic
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(getActivity(), "Autenticazione fallita!",
+                            Toast.makeText(getActivity(), "email o password errati!",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
 
@@ -90,6 +96,11 @@ public class LoginTabFragment extends Fragment  implements Executor, View.OnClic
                     }
                 });
         // [END create_user_with_email]
+
+    }
+
+    //TODO accedere con google (optional)
+    private void accedi() {
 
     }
 
@@ -109,30 +120,27 @@ public class LoginTabFragment extends Fragment  implements Executor, View.OnClic
         String username=this.username.getText().toString().trim();
 
 
-            if(email.isEmpty()){
-                Toast.makeText(getActivity(),"Inserisci username!", Toast.LENGTH_SHORT).show();
+        switch (view.getId()){
+            case R.id.login:
+                if(email.isEmpty()){
+                    Toast.makeText(getActivity(),"Inserisci username!", Toast.LENGTH_SHORT).show();
 
-            }else {
-                if (password.isEmpty()) {
-                    Toast.makeText(getActivity(), "Inserisci password!", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (password.isEmpty()) {
+                        Toast.makeText(getActivity(), "Inserisci password!", Toast.LENGTH_SHORT).show();
 
-                }
-                else{
-                            accedi(email,password);
-                        }
+                    }
+                    else{
+                        accedi(email,password);
                     }
                 }
-
-
-
-
-
-
-
-
-    @Override
-    public void execute(Runnable runnable) {
-
+            case R.id.google:
+                accedi();
+        }
     }
+
+
+
+
 
 }
