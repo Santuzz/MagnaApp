@@ -32,7 +32,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="General settings"
-
         app:icon="@drawable/ic_baseline_settings_24">
 
         <SwitchPreferenceCompat
@@ -46,16 +45,17 @@
 
     <PreferenceCategory
         app:icon="@drawable/ic_baseline_notifications_24"
-        app:title="Notifications">
+        app:title="@string/notification">
 
         <SwitchPreferenceCompat
-            app:key="notifications"
-            app:title="Disable notifications"
-            app:summaryOn="You will no longer receive any notifications"
-            app:summaryOff="You will receive all notifications"/>
+            app:key="@string/notifications"
+            app:title="Enable notifications"
+            app:summaryOn="You will receive all notifications"
+            app:summaryOff="You will no longer receive any notifications"/>
 
         <SeekBarPreference
             app:key="volume_notifications"
+            app:dependency="@string/notifications"
             app:title="Volume"
             app:showSeekBarValue="true"
             app:defaultValue= "60" />

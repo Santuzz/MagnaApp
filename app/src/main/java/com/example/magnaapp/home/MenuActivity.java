@@ -1,6 +1,7 @@
 package com.example.magnaapp.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -14,6 +15,9 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setTheme(R.style.Theme_MagnaApp);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
@@ -24,4 +28,6 @@ public class MenuActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }
+
+
 }
