@@ -38,11 +38,8 @@
         <item>Antipasti</item>
         <item>Primi</item>
         <item>Secondi</item>
-        <item>Contorni</item>
-        <item>Pizze</item>
         <item>Bevande</item>
         <item>Dolci</item>
-        <item>Caffetteria</item>
     </string-array>
 
     <string-array name="pastOrdersList">

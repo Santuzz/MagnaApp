@@ -12,11 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MagnaApp"
-        tools:targetApi="31"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
-
-        >
+        tools:targetApi="31">
         <activity
             android:name=".home.MenuActivity"
             android:exported="false" />
@@ -31,4 +29,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

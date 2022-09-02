@@ -1,5 +1,6 @@
 package com.example.magnaapp.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,7 +14,7 @@ import android.view.ViewGroup;
 import com.example.magnaapp.R;
 
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment implements RecyclerViewInterface{
     RecyclerView recyclerView;
 
     @Override
@@ -24,7 +25,18 @@ public class MenuFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerViewMenu);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(new ListAdapter(getResources().getStringArray(R.array.menuList)));
+        recyclerView.setAdapter(new ListAdapter((RecyclerViewInterface) this, getResources().getStringArray(R.array.menuList)));
         return view;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+        AntipastiFragment nextFrag= new AntipastiFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(this.getId(), nextFrag, "findThisFragment")
+                .addToBackStack(null)
+                .commit();
+
     }
 }
