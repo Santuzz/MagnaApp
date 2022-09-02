@@ -37,7 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/recycler_row_slim"
+                app:srcCompat="@drawable/recycler_row_arancio"
                 tools:ignore="contentDescription"
                  />
 
