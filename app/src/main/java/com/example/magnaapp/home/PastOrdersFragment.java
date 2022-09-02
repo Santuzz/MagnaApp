@@ -14,7 +14,6 @@ import com.example.magnaapp.R;
 
 
 public class PastOrdersFragment extends Fragment {
-    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,9 +21,6 @@ public class PastOrdersFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_past_orders, container, false);
 
-        recyclerView = view.findViewById(R.id.recyclerViewPastOrder);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(new ListAdapter(getResources().getStringArray(R.array.pastOrdersList)));
         return view;
     }
 }

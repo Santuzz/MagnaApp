@@ -16,8 +16,6 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setTheme(R.style.Theme_MagnaApp);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
@@ -26,6 +24,8 @@ public class MenuActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
+
 
     }
 
