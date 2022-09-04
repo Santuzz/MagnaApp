@@ -14,7 +14,6 @@ public class LoginActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager2;
 
-    float v = 0;
 
 
     @Override

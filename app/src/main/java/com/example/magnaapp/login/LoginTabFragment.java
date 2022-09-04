@@ -32,7 +32,6 @@ public class LoginTabFragment extends Fragment  implements View.OnClickListener 
     private TextView forget_psw;
 
 
-    float v = 0;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIstanceState) {
         Toast.makeText(getActivity(),"Accedi!", Toast.LENGTH_SHORT).show();

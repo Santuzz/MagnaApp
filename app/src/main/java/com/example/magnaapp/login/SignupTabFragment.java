@@ -61,7 +61,6 @@ public class SignupTabFragment extends Fragment  implements  View.OnClickListene
 
         signup.setOnClickListener(this);
 
-        float v = 0;
 
         return view;
 
