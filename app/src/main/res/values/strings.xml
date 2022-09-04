@@ -42,6 +42,54 @@
         <item>Dolci</item>
     </string-array>
 
+    <string-array name="antipasti">
+        <item>Crostini misti</item>
+        <item>Tagliere di salumi</item>
+        <item>Insalata di gamberi</item>
+        <item>Lumachine</item>
+        <item>Montanare</item>
+    </string-array>
+
+    <string-array name="primi">
+        <item>Lasagne alla bolognese</item>
+        <item>Linguine allo scoglio</item>
+        <item>Trofie al pesto</item>
+        <item>Tortellini in brodo</item>
+        <item>Gnocchi ai 4 formaggi</item>
+    </string-array>
+
+    <string-array name="secondi">
+        <item>Fiorentina</item>
+        <item>Grigliata mista</item>
+        <item>Orata al forno</item>
+        <item>Rostbeef</item>
+        <item>Polpo e patate</item>
+    </string-array>
+
+    <string-array name="bevande">
+        <item>Acqua naturale</item>
+        <item>Acqua gassata</item>
+        <item>Coca-cola</item>
+        <item>Vino rosso</item>
+        <item>Vino bianco</item>
+    </string-array>
+
+    <string-array name="dolci">
+        <item>Pastiera</item>
+        <item>Cheesecake</item>
+        <item>Tiramisu</item>
+        <item>Salame al cioccolato</item>
+        <item>Torta barozzi</item>
+    </string-array>
+
+    <array name="portate">
+        <item>@array/antipasti</item>
+        <item>@array/primi</item>
+        <item>@array/secondi</item>
+        <item>@array/bevande</item>
+        <item>@array/dolci</item>
+    </array>
+
     <string-array name="pastOrdersList">
         <item>Ultimo</item>
         <item>Penultimo</item>

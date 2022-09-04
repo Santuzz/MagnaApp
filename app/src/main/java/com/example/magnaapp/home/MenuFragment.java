@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.example.magnaapp.R;
 
 
-public class MenuFragment extends Fragment implements RecyclerViewInterface{
+public class MenuFragment extends Fragment implements RecyclerViewInterface {
     RecyclerView recyclerView;
 
     @Override
@@ -32,7 +32,7 @@ public class MenuFragment extends Fragment implements RecyclerViewInterface{
     @Override
     public void onItemClick(int position) {
 
-        AntipastiFragment nextFrag= new AntipastiFragment();
+        AntipastiFragment nextFrag = new AntipastiFragment(position);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(this.getId(), nextFrag, "findThisFragment")
                 .addToBackStack(null)

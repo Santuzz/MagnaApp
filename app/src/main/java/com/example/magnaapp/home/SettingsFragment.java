@@ -18,7 +18,7 @@ import com.example.magnaapp.R;
 
 import java.util.prefs.PreferenceChangeListener;
 
-public class SettingsFragment extends PreferenceFragmentCompat{
+public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
