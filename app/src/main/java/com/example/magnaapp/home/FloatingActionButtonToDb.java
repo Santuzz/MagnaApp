@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+//TODO verrà sostituito dalla classe fabToDb
 public class FloatingActionButtonToDb extends Fragment {
 
     FirebaseAuth mAuth;
@@ -25,18 +26,17 @@ public class FloatingActionButtonToDb extends Fragment {
      FloatingActionButtonToDb(String one,String two,String three,String four,String five,String tipo){
        FoodCreation food=new FoodCreation(one ,two,three,four,five,tipo);
 
-        FirebaseDatabase.getInstance("https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app").getReference("antipasti")
+        FirebaseDatabase
+                .getInstance("https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app")
+                .getReference("antipasti")
                 .child(mAuth.getInstance().getUid())
                 .setValue(food).addOnCompleteListener( new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             System.out.println("INVIO CIBO FIREBASE OK");
-
                         }else{
                             System.out.println("INVIO CIBO FIREBASE FAIL");
-
-
                         }
                     }
                 });

@@ -1,5 +1,6 @@
 package com.example.magnaapp.home;
 
+//TODO classe da eliminare
 public class FoodCreation {
 
     public String montanare, crostiniMisti, tagliereSalumi, insalataDiGamberi, couppoNapoletano;

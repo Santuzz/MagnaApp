@@ -3,12 +3,15 @@ package com.example.magnaapp.home;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.magnaapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> implements RecyclerViewInterface {
 
