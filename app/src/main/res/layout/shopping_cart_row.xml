@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="20dp"
+        app:strokeColor="@color/theme_nd"
+        app:strokeWidth="3dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="#FEFEFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            >
+
+            <TextView
+                android:id="@+id/textOrdinato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Piatto ordinato"
+                android:textColor="@color/theme_st"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/textPrezzoCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textColor="@color/theme_st"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@+id/textQt"
+                app:layout_constraintEnd_toStartOf="@+id/textEuro"
+                app:layout_constraintStart_toStartOf="@+id/textQt" />
+
+            <TextView
+                android:id="@+id/textEuro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=".00 €"
+                android:textColor="@color/theme_st"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@+id/textQt"
+                app:layout_constraintEnd_toEndOf="@+id/textQuantity"
+                app:layout_constraintStart_toEndOf="@+id/textPrezzoCart" />
+
+            <TextView
+                android:id="@+id/textQt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="20dp"
+                android:text="Qt."
+                android:textColor="@color/theme_st"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fabRemoveItem"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1" />
+
+            <TextView
+                android:id="@+id/textQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="10"
+                android:textColor="@color/theme_st"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textQt"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabRemoveItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:backgroundTint="@color/red_600"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="center"
+                app:fabCustomSize="45dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="25dp"
+                app:srcCompat="@drawable/ic_baseline_delete_24"
+                app:tint="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
