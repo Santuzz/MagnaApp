@@ -82,6 +82,7 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
                     foodQuantity.values().remove(0);
                 }
                 if(!foodQuantity.isEmpty()){
+                    new FabToDb(foodQuantity,"old");
                     new FabToDb(foodQuantity);
                 }
         }
