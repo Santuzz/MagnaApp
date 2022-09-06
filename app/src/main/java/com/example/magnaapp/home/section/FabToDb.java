@@ -20,11 +20,11 @@ import java.util.Map;
 public class FabToDb {
 
    Map<String, Integer> selectedFood;
-
     public FabToDb(Map<String, Integer> selectedFood) {
         this.selectedFood = selectedFood;
 
-        FirebaseDatabase.getInstance("https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app").getReference("Ordine nel carello")
+
+        FirebaseDatabase.getInstance("https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users/"+FirebaseAuth.getInstance().getUid()+"/Ha nel carello:")
                 .child(FirebaseAuth.getInstance().getUid())
                 .setValue(selectedFood).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
