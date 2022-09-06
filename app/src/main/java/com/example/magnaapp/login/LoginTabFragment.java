@@ -23,18 +23,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginTabFragment extends Fragment  implements View.OnClickListener {
+public class LoginTabFragment extends Fragment implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
-    private EditText password,username,email;
+    private EditText password, username, email;
     private ImageButton google;
-    private  AppCompatButton login;
+    private AppCompatButton login;
     private TextView forget_psw;
 
 
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIstanceState) {
-        Toast.makeText(getActivity(),"Accedi!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Accedi!", Toast.LENGTH_SHORT).show();
 
         View view = (View) inflater.inflate(R.layout.login_tab_fragment, container, false);
 
@@ -45,7 +44,7 @@ public class LoginTabFragment extends Fragment  implements View.OnClickListener 
         username = view.findViewById(R.id.username);
         password = view.findViewById(R.id.password);
         google = view.findViewById(R.id.google);
-        forget_psw=view.findViewById(R.id.forget_psw);
+        forget_psw = view.findViewById(R.id.forget_psw);
 
         forget_psw.setOnClickListener(this);
         google.setOnClickListener(this);
@@ -56,16 +55,17 @@ public class LoginTabFragment extends Fragment  implements View.OnClickListener 
         return view;
 
     }
+
     // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
 
-            String Bentornato="Bentornato "+currentUser.getEmail().toString()+"\n\t\t\t\t\t\taccedi di nuovo!";
-            Toast.makeText(getActivity(),Bentornato ,Toast.LENGTH_LONG).show();
+            String Bentornato = "Bentornato " + currentUser.getEmail().toString() + "\n\t\t\t\t\t\taccedi di nuovo!";
+            Toast.makeText(getActivity(), Bentornato, Toast.LENGTH_LONG).show();
             updateUI(null);
 
         }
@@ -82,7 +82,7 @@ public class LoginTabFragment extends Fragment  implements View.OnClickListener 
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getActivity(), "Bentornato!",
                                     Toast.LENGTH_LONG).show();
-                            FirebaseUser user= mAuth.getCurrentUser();
+                            FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
 
                             Intent intent = new Intent(getActivity(), MenuActivity.class);
@@ -106,9 +106,8 @@ public class LoginTabFragment extends Fragment  implements View.OnClickListener 
     }
 
 
-
-
-    private void reload() { }
+    private void reload() {
+    }
 
     private void updateUI(FirebaseUser user) {
 
@@ -116,23 +115,22 @@ public class LoginTabFragment extends Fragment  implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        String email=this.username.getText().toString().trim();
-        String password=this.password.getText().toString().trim();
-        String username=this.username.getText().toString().trim();
+        String email = this.username.getText().toString().trim();
+        String password = this.password.getText().toString().trim();
+        String username = this.username.getText().toString().trim();
 
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.login:
-                if(email.isEmpty()){
-                    Toast.makeText(getActivity(),"Inserisci username!", Toast.LENGTH_SHORT).show();
+                if (email.isEmpty()) {
+                    Toast.makeText(getActivity(), "Inserisci username!", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
                     if (password.isEmpty()) {
                         Toast.makeText(getActivity(), "Inserisci password!", Toast.LENGTH_SHORT).show();
 
-                    }
-                    else{
-                        accedi(email,password);
+                    } else {
+                        accedi(email, password);
                     }
                 }
            /*case R.id.google:
@@ -149,23 +147,24 @@ public class LoginTabFragment extends Fragment  implements View.OnClickListener 
 
 
     }
-            //TODO per reset psw con codice tramite email
+
+    //TODO per reset psw con codice tramite email
     private void resetPassword(String email) {
-         // [START send_password_reset]
-            FirebaseAuth auth = FirebaseAuth.getInstance();
+        // [START send_password_reset]
+        FirebaseAuth auth = FirebaseAuth.getInstance();
 
-            auth.sendPasswordResetEmail(email)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Log.d("success", "Email inviato!");
-                                Toast.makeText(getActivity(), "Email ripristino password inviato!", Toast.LENGTH_SHORT).show();
+        auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("success", "Email inviato!");
+                            Toast.makeText(getActivity(), "Email ripristino password inviato!", Toast.LENGTH_SHORT).show();
 
-                            }
                         }
-                    });
-            // [END send_password_reset]
-        }
+                    }
+                });
+        // [END send_password_reset]
     }
+}
 

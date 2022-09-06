@@ -32,16 +32,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.Executor;
 
-public class SignupTabFragment extends Fragment  implements  View.OnClickListener {
-
+public class SignupTabFragment extends Fragment implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private EditText conf_psw, password, email, username, cof_psw;
 
     private AppCompatButton signup;
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIstanceState) {
@@ -50,7 +46,6 @@ public class SignupTabFragment extends Fragment  implements  View.OnClickListene
         View view = (View) inflater.inflate(R.layout.signup_tab_fragment, container, false);
 
         mAuth = FirebaseAuth.getInstance();
-
 
         signup = view.findViewById(R.id.signup);
         email = view.findViewById(R.id.email);
@@ -61,16 +56,12 @@ public class SignupTabFragment extends Fragment  implements  View.OnClickListene
 
         signup.setOnClickListener(this);
 
-
         return view;
 
     }
 
-
-
     private void createAccount(String username, String email, String password) {
         // [START create_user_with_email]
-
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
@@ -80,39 +71,33 @@ public class SignupTabFragment extends Fragment  implements  View.OnClickListene
                             // Sign in success, update UI with the signed-in user's information
 
 
-                            FirebaseUser user= mAuth.getCurrentUser();
+                            FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            CreateAccount userAc= new CreateAccount(email,password,username);
+                            CreateAccount userAc = new CreateAccount(email, password, username);
                             FirebaseDatabase.getInstance("https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users")
                                     .child(FirebaseAuth.getInstance().getUid())
-                                    .setValue(userAc).addOnCompleteListener( new OnCompleteListener<Void>() {
+                                    .setValue(userAc).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful()){
+                                            if (task.isSuccessful()) {
                                                 Toast.makeText(getActivity(), "Account creato con successo!",
                                                         Toast.LENGTH_SHORT).show();
                                                 //TODO ho utilizzato un nuovo intent per richiamare il login ma credo che ci sia un modo per richiamare il fragment login senza crearne un nuovo intent ma sono stanco pensaci tu
                                                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                                                 startActivity(intent);
-                                            }else{
+                                            } else {
                                                 Toast.makeText(getActivity(), "Registrazione fallita!",
                                                         Toast.LENGTH_SHORT).show();
                                                 updateUI(null);
-
                                             }
                                         }
                                     });
-
-
-
-
 
                         } else {
                             // If sign in fails, display a message to the user
                             Toast.makeText(getActivity(), "Registrazione fallita!",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
-
                         }
                     }
                 });
@@ -150,11 +135,10 @@ public class SignupTabFragment extends Fragment  implements  View.OnClickListene
                     if (cnf_psw.isEmpty()) {
                         Toast.makeText(getActivity(), "Ripeti la password!", Toast.LENGTH_SHORT).show();
 
-                    } if(password.length()<6){
-                            Toast.makeText(getActivity(), "Password troppo corta!", Toast.LENGTH_LONG).show();
                     }
-
-                    else {
+                    if (password.length() < 6) {
+                        Toast.makeText(getActivity(), "Password troppo corta!", Toast.LENGTH_LONG).show();
+                    } else {
 
                         if (!cnf_psw.contentEquals(password)) {
                             Toast.makeText(getActivity(), "La password non combacia!", Toast.LENGTH_SHORT).show();
@@ -164,11 +148,8 @@ public class SignupTabFragment extends Fragment  implements  View.OnClickListene
                     }
                 }
             }
-
-
         }
     }
-
 
 
 }

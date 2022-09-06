@@ -1,23 +1,22 @@
 package com.example.magnaapp.home;
 
+//TODO classe da eliminare
 public class FoodCreation {
 
-    public String montanare,crostiniMisti,tagliereSalumi,insalataDiGamberi,couppoNapoletano;
+    public String montanare, crostiniMisti, tagliereSalumi, insalataDiGamberi, couppoNapoletano;
 
-    public FoodCreation(){
+    public FoodCreation() {
 
     }
 
-    public FoodCreation(String one, String two, String three,String four,String five,String tipo){
+    public FoodCreation(String one, String two, String three, String four, String five, String tipo) {
 
-        if (tipo.contentEquals("Antipasti")){
-            this.montanare=one;
-            this.crostiniMisti=two;
-            this.tagliereSalumi=three;
-            this.insalataDiGamberi=four ;
-            this.couppoNapoletano=five;
+        if (tipo.contentEquals("Antipasti")) {
+            this.montanare = one;
+            this.crostiniMisti = two;
+            this.tagliereSalumi = three;
+            this.insalataDiGamberi = four;
+            this.couppoNapoletano = five;
         }
-
-
     }
 }

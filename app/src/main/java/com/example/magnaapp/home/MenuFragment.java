@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.magnaapp.R;
+import com.example.magnaapp.home.section.ListSectionAdapter;
+import com.example.magnaapp.home.section.SectionMenuFragment;
 
 
-public class MenuFragment extends Fragment implements RecyclerViewInterface{
+public class MenuFragment extends Fragment implements RecyclerViewInterface {
     RecyclerView recyclerView;
 
     @Override
@@ -32,11 +34,11 @@ public class MenuFragment extends Fragment implements RecyclerViewInterface{
     @Override
     public void onItemClick(int position) {
 
-        AntipastiFragment nextFrag= new AntipastiFragment();
+        //AntipastiFragment nextFrag = new AntipastiFragment(position);
+        SectionMenuFragment nextFrag = new SectionMenuFragment(position);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(this.getId(), nextFrag, "findThisFragment")
                 .addToBackStack(null)
                 .commit();
-
     }
 }

@@ -25,8 +25,6 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-
-
     }
 
 
