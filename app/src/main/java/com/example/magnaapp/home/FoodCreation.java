@@ -3,7 +3,7 @@ package com.example.magnaapp.home;
 //TODO classe da eliminare
 public class FoodCreation {
 
-    public String montanare, crostiniMisti, tagliereSalumi, insalataDiGamberi, couppoNapoletano;
+    public String crostiniMisti, tagliereSalumi, insalataDiGamberi, lumachine,montanare;
 
     public FoodCreation() {
 
@@ -12,11 +12,12 @@ public class FoodCreation {
     public FoodCreation(String one, String two, String three, String four, String five, String tipo) {
 
         if (tipo.contentEquals("Antipasti")) {
-            this.montanare = one;
-            this.crostiniMisti = two;
-            this.tagliereSalumi = three;
-            this.insalataDiGamberi = four;
-            this.couppoNapoletano = five;
+            this.montanare = five;
+            this.crostiniMisti = one;
+            this.tagliereSalumi = two;
+            this.insalataDiGamberi = three;
+            this.lumachine = four;
         }
+
     }
 }
