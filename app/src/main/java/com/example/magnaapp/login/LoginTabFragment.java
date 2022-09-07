@@ -62,6 +62,7 @@ public class LoginTabFragment extends Fragment implements View.OnClickListener {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        /*
         if (currentUser != null) {
 
             String Bentornato = "Bentornato " + currentUser.getEmail().toString() + "\n\t\t\t\t\t\taccedi di nuovo!";
@@ -69,6 +70,8 @@ public class LoginTabFragment extends Fragment implements View.OnClickListener {
             updateUI(null);
 
         }
+
+         */
     }
     // [END on_start_check_user]
 
