@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.magnaapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> implements RecyclerViewInterface {
 
     private final RecyclerViewInterface recyclerViewInterface;
@@ -26,7 +25,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row, parent, false), recyclerViewInterface);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_row, parent, false);
+        return new MyViewHolder(itemView, recyclerViewInterface);
     }
 
     @Override

@@ -76,8 +76,6 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
                 break;
             default:
                 Map<String, Integer> foodQuantity = ListSectionAdapter.getData();
-                System.out.println("ciao");
-                System.out.println(foodQuantity);
                 for (int i = 0; i < foodQuantity.size(); i++) {
                     foodQuantity.values().remove(0);
                 }

@@ -1,18 +1,15 @@
-package com.example.magnaapp.home.cart;
+package com.example.magnaapp.home;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.magnaapp.R;
-import com.example.magnaapp.home.RecyclerViewInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.HashMap;
 
 public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyViewHolder> implements RecyclerViewInterface {
 
@@ -27,17 +24,22 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_cart_row, parent, false);
+        return new MyViewHolder(itemView, recyclerViewInterface);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        //TODO da modificare inserendo i dati ricevuti dal db
+        holder.textOrdinato.setText(list[position]);
+        holder.textPrezzoCart.setText("10");
+        holder.textQuantity.setText("2");
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.length;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -52,14 +54,25 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
             textPrezzoCart = itemView.findViewById(R.id.textPrezzoCart);
             textQuantity = itemView.findViewById(R.id.textQuantity);
 
+            fabRemoveItem = itemView.findViewById(R.id.fabRemoveItem);
+
 
             fabRemoveItem.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
+                    if (recyclerViewInterface != null) {
+                        int pos = getAbsoluteAdapterPosition();
+
+                        if (pos != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onItemClick(pos);
+                        }
+                    }
                     //TODO rimuove la row dalla recyclerView
                 }
             });
+
+
 
         }
     }
