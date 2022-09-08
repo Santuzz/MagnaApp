@@ -45,7 +45,7 @@ public class PastOrdersFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
         return view;
     }
 }
