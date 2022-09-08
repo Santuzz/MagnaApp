@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager2;
 
+    public final static    String connection="https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
