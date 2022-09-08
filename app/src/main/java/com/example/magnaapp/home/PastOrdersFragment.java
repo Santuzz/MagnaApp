@@ -2,6 +2,8 @@ package com.example.magnaapp.home;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.magnaapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 
 
 public class PastOrdersFragment extends Fragment {
@@ -21,6 +32,20 @@ public class PastOrdersFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_past_orders, container, false);
 
+
+        Map<String, Integer> foodQuantity;
+        DatabaseReference root =FirebaseDatabase.getInstance().getReference().child("Ha nel carrello");
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        })
         return view;
     }
 }

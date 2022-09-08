@@ -74,8 +74,8 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                             CreateAccount userAc = new CreateAccount(email, password, username);
-                            FirebaseDatabase.getInstance("https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getUid())
+
+                            FirebaseDatabase.getInstance("https://magnalbase-default-rtdb.europe-west1.firebasedatabase.app").getReference("Users/"+FirebaseAuth.getInstance().getUid())
                                     .setValue(userAc).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

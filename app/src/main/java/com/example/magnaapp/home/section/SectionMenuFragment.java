@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.magnaapp.R;
-import com.example.magnaapp.home.FloatingActionButtonToDb;
 import com.example.magnaapp.home.RecyclerViewInterface;
 import com.example.magnaapp.home.section.ListSectionAdapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -80,7 +79,7 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
                     foodQuantity.values().remove(0);
                 }
                 if(!foodQuantity.isEmpty()){
-                    new FabToDb(foodQuantity,"old");
+                    new FabToDb(foodQuantity,"OldOrders");
                     new FabToDb(foodQuantity);
                 }
         }
