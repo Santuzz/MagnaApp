@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.magnaapp.R;
+import com.example.magnaapp.home.Data;
 import com.example.magnaapp.home.RecyclerViewInterface;
 import com.example.magnaapp.home.section.ListSectionAdapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -77,10 +78,15 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
                 getActivity().getSupportFragmentManager().popBackStack();
                 break;
             default:
-                Map<String, ArrayList<Integer>> foodQuantity = ListSectionAdapter.getData();
+                //Map<String, ArrayList<Integer>> foodQuantity = ListSectionAdapter.getData();
+                ArrayList<Data> foodQuantity = ListSectionAdapter.getData();
+                /*
                 for (int i = 0; i < foodQuantity.size(); i++) {
                     foodQuantity.values().remove(0);
+
                 }
+                 */
+                foodQuantity.removeIf( name -> name.getQuantity()==0);
                 if(!foodQuantity.isEmpty()){
                     new FabToDb(foodQuantity,"OldOrders");
                     new FabToDb(foodQuantity);

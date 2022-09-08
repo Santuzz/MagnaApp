@@ -2,6 +2,7 @@ package com.example.magnaapp.home.section;
 
 import static com.example.magnaapp.login.LoginActivity.connection;
 
+import com.example.magnaapp.home.Data;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.magnaapp.home.Data;
 import com.example.magnaapp.login.CreateAccount;
 import com.example.magnaapp.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,17 +26,24 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class FabToDb {
 
-    Map<String, ArrayList<Integer>> selectedFood, oldSelectedFood;
+    //Map<String, ArrayList<Integer>> selectedFood;
+    ArrayList<Data> selectedFood;
+    ArrayList<Data> dataSend, dataReceive;
+    Map<String, Object> oldSelectedFood;
     CreateAccount user = new CreateAccount();
 
-    public FabToDb(Map<String, ArrayList<Integer>> selectedFood) {
-        this.selectedFood = selectedFood;
+    public FabToDb(ArrayList<Data> dataToSend) {
+        this.dataSend = dataToSend;
+        //this.selectedFood = selectedFood;
         Date now = new Date();
 
+        //invio al db i prodotti selezionati (ovvero quelli con quantità diversa da zero
         FirebaseDatabase.getInstance(connection)
                 .getReference("Users/" + FirebaseAuth.getInstance().getUid() + "/Ha nel carrello:")
                 .child("Ordine:").setValue(selectedFood)
@@ -42,24 +51,35 @@ public class FabToDb {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-
-
                             DatabaseReference root = FirebaseDatabase.getInstance(connection)
                                     .getReference()
                                     .child("Users/" + FirebaseAuth.getInstance().getUid() + "/Ha nel carrello:");
-                            root.addValueEventListener(new ValueEventListener() {
+                            root.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapShot) {
 
-                                    ArrayList<String> food = new ArrayList<>();
+                                    //ArrayList<String> food = new ArrayList<>();
+                                    ArrayList<Data> food = new ArrayList<Data>();
+                                    /*
+                                    ArrayData data = new Data(snapShot.getValue(Data.class));
+                                    System.out.println("Data: " + snapShot.getValue(Data.class));
+                                    System.out.println("Piatto: " + data.getPlate());
+                                    System.out.println("quantità: " + data.getQuantity());
+                                    System.out.println("prezzo: " + data.getPrice());
 
+                                     */
+                                    //oldSelectedFood = new HashMap<String, Object>();
                                     for (DataSnapshot datasnapShot : snapShot.getChildren()) {
-                                        food.add(datasnapShot.getValue().toString());
+                                        //food.add(datasnapShot.getValue().toString());
+                                        //System.out.println("Key: " + datasnapShot.getKey());
+                                        //System.out.println("Value: " + datasnapShot.getValue());
+                                        //oldSelectedFood.put(datasnapShot.getKey(), datasnapShot.getValue());
+                                        food.add(datasnapShot.getValue(Data.class));
                                     }
-
+                                    System.out.println("======================");
+                                    //System.out.println("Ha nel carrello " + oldSelectedFood);
                                     System.out.println("Ha nel carrello " + food);
-                                    food.clear();
-
+                                    //food.clear();
                                 }
 
                                 @Override
@@ -69,9 +89,7 @@ public class FabToDb {
                             });
                             System.out.println("Aggiunto al Db");
                         } else {
-
                             System.out.println("Errore nel db");
-
                             updateUI(null);
                         }
                     }
@@ -79,7 +97,7 @@ public class FabToDb {
     }
 
 
-    public FabToDb(Map<String, ArrayList<Integer>> selectedFood, String OldCarrello) {
+    public FabToDb(ArrayList<Data> selectedFood, String OldCarrello) {
 
         this.selectedFood = selectedFood;
         Date now = new Date();

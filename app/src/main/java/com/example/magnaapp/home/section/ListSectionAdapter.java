@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.magnaapp.R;
+import com.example.magnaapp.home.Data;
 import com.example.magnaapp.home.RecyclerViewInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -25,13 +26,16 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
     private final RecyclerViewInterface recyclerViewInterface;
     String[]  listPortata;
     int[] listPrezzo;
-    private static Map<String, ArrayList<Integer>> selectedFood;
+    //private static Map<String, ArrayList<Integer>> selectedFood;
+    private static ArrayList<Data> selectedFood;
 
     public ListSectionAdapter(RecyclerViewInterface recyclerViewInterface, String[] listPortata, int[] listPrezzo) {
         this.recyclerViewInterface = recyclerViewInterface;
         this.listPortata = listPortata;
         this.listPrezzo = listPrezzo;
-        selectedFood = new HashMap<String, ArrayList<Integer>>();
+        //selectedFood = new HashMap<String, ArrayList<Integer>>();
+        selectedFood = new ArrayList<Data>();
+
     }
 
     @NonNull
@@ -51,10 +55,16 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
             public void afterTextChanged(Editable s) {
                 // This will be the text from the EditText
                 String key = holder.number.getText().toString().trim();
+                int quantity = Integer.parseInt(s.toString().trim());
+                int price = listPrezzo[holder.getBindingAdapterPosition()];
+                /*
                 ArrayList<Integer> value =  new ArrayList<>();
-                value.add(Integer.parseInt(s.toString().trim()));
-                value.add(listPrezzo[holder.getBindingAdapterPosition()]);
+                value.add(quantity);
+                value.add(price);
                 selectedFood.put(listPortata[holder.getBindingAdapterPosition()],value);
+                */
+                selectedFood.add(new Data(key,quantity, price));
+
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -106,7 +116,13 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
         }
     }
 
+    /*
     public static Map<String, ArrayList<Integer>> getData(){
+        return selectedFood;
+    }
+     */
+
+    public static ArrayList<Data> getData(){
         return selectedFood;
     }
 
