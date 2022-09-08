@@ -33,13 +33,48 @@ public class FabToDb {
 
     public FabToDb(Map<String, Integer> selectedFood) {
         this.selectedFood = selectedFood;
+        Date now = new Date();
 
         FirebaseDatabase.getInstance(connection).getReference("Users/"+FirebaseAuth.getInstance().getUid()+"/Ha nel carrello:")
-                .setValue(selectedFood).addOnCompleteListener(new OnCompleteListener<Void>() {
+                .child("Ordine:").setValue(selectedFood).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+
+
+
+
+                            DatabaseReference root =FirebaseDatabase.getInstance(connection).getReference().child("Users/"+FirebaseAuth.getInstance().getUid()+"/Ha nel carrello:");
+                            root.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapShot) {
+
+                                    ArrayList<String> food = new ArrayList<>();
+
+                                    for( DataSnapshot datasnapShot : snapShot.getChildren()){
+                                        food.add( datasnapShot.getValue().toString());
+                                    }
+
+                                    System.out.println("Ha nel carrello "+food);
+                                    food.clear();
+
+
+                                }
+
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+
                                 System.out.println("Aggiunto al Db");
+
+
+
+
+
                         } else {
 
                             System.out.println("Errore nel db");
@@ -48,6 +83,9 @@ public class FabToDb {
                         }
                     }
                 });
+
+
+
 
     }
 
@@ -85,7 +123,7 @@ public class FabToDb {
                 }
 
                 System.out.println("Ha ordinato in passato:"+food);
-
+                food.clear();
 
             }
 
