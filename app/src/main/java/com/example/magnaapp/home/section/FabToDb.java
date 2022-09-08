@@ -42,8 +42,6 @@ public class FabToDb {
                         if (task.isSuccessful()) {
 
 
-
-
                             DatabaseReference root =FirebaseDatabase.getInstance(connection).getReference().child("Users/"+FirebaseAuth.getInstance().getUid()+"/Ha nel carrello:");
                             root.addValueEventListener(new ValueEventListener() {
                                 @Override
