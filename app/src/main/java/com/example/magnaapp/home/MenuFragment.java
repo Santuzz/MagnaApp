@@ -31,13 +31,17 @@ public class MenuFragment extends Fragment implements RecyclerViewInterface {
         return view;
     }
 
+    /**
+     * Al click su una riga della recyclerView il MenuFragment viene sostituito da un nuovo
+     * SectionMenuFragment in cui si possono selezionare i cibi da aggiungere al carrello
+     * @param position indica la posizione della riga della recyclerView premuta
+     */
     @Override
     public void onItemClick(int position) {
 
-        //AntipastiFragment nextFrag = new AntipastiFragment(position);
         SectionMenuFragment nextFrag = new SectionMenuFragment(position);
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(this.getId(), nextFrag, "findThisFragment")
+                .replace(this.getId(), nextFrag)
                 .addToBackStack(null)
                 .commit();
     }

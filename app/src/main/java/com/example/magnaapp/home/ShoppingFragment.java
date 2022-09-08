@@ -18,7 +18,6 @@ public class ShoppingFragment extends Fragment implements View.OnClickListener, 
 
     RecyclerView recyclerView;
     ExtendedFloatingActionButton fabConfermaOrdine;
-
     String[] array;
 
     @Override

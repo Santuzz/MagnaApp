@@ -12,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.magnaapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+/**
+ * adapter utilizzato dalla recyclerView del MenuFragment
+ */
+
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> implements RecyclerViewInterface {
 
     private final RecyclerViewInterface recyclerViewInterface;

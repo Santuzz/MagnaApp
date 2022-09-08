@@ -17,9 +17,7 @@ import com.example.magnaapp.home.section.ListSectionAdapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -27,8 +25,9 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
     RecyclerView recyclerView;
     ExtendedFloatingActionButton fabOrdina;
     FloatingActionButton fabClose;
-    String[] array;
-    private int position;
+    String[] arrayPortata;
+    int[] arrayPrezzo;
+    private final int position;
 
     public SectionMenuFragment(int contentLayoutId) {
         super(contentLayoutId);
@@ -42,7 +41,10 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
         View view =  inflater.inflate(R.layout.fragment_section_menu, container, false);
 
         TypedArray portata = getResources().obtainTypedArray(R.array.portate);
-        array = getResources().getStringArray(portata.getResourceId(position,0));
+        arrayPortata = getResources().getStringArray(portata.getResourceId(position,0));
+
+        TypedArray prezzo = getResources().obtainTypedArray(R.array.prezziPortate);
+        arrayPrezzo = getResources().getIntArray(prezzo.getResourceId(position,0));
 
         fabOrdina = view.findViewById(R.id.fabOrdina);
         fabClose = view.findViewById(R.id.fabClose);
@@ -52,8 +54,9 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
 
         recyclerView = view.findViewById(R.id.recyclerViewMenuSection);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(new ListSectionAdapter((RecyclerViewInterface) this, array));
+        recyclerView.setAdapter(new ListSectionAdapter((RecyclerViewInterface) this, arrayPortata, arrayPrezzo));
 
+        prezzo.recycle();
         portata.recycle();
         return view;
     }
@@ -74,7 +77,7 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
                 getActivity().getSupportFragmentManager().popBackStack();
                 break;
             default:
-                Map<String, Integer> foodQuantity = ListSectionAdapter.getData();
+                Map<String, ArrayList<Integer>> foodQuantity = ListSectionAdapter.getData();
                 for (int i = 0; i < foodQuantity.size(); i++) {
                     foodQuantity.values().remove(0);
                 }

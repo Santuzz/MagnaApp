@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.magnaapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+/**
+ * Adapter utilizzato per visualizzare nel carrello i cibi selezionati dal menu che si vogliono acquistare
+ */
+
 public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyViewHolder> implements RecyclerViewInterface {
 
     private final RecyclerViewInterface recyclerViewInterface;

@@ -11,6 +11,11 @@ import android.os.Bundle;
 import com.example.magnaapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Activity principale che viene creata dopo il login e contiene una BottomNavigationView per
+ * navigare tra i fragment dell'applicazione
+ */
+
 public class MenuActivity extends AppCompatActivity {
 
     @Override

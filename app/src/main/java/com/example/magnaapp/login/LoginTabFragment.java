@@ -23,6 +23,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Fragment del login inserito nel tabLayout
+ */
+
 public class LoginTabFragment extends Fragment implements View.OnClickListener {
 
     private FirebaseAuth mAuth;

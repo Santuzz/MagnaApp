@@ -28,51 +28,46 @@ import java.util.Map;
 
 public class FabToDb {
 
-   Map<String, Integer> selectedFood ,oldSelectedFood;
+    Map<String, ArrayList<Integer>> selectedFood, oldSelectedFood;
     CreateAccount user = new CreateAccount();
 
-    public FabToDb(Map<String, Integer> selectedFood) {
+    public FabToDb(Map<String, ArrayList<Integer>> selectedFood) {
         this.selectedFood = selectedFood;
         Date now = new Date();
 
-        FirebaseDatabase.getInstance(connection).getReference("Users/"+FirebaseAuth.getInstance().getUid()+"/Ha nel carrello:")
-                .child("Ordine:").setValue(selectedFood).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance(connection)
+                .getReference("Users/" + FirebaseAuth.getInstance().getUid() + "/Ha nel carrello:")
+                .child("Ordine:").setValue(selectedFood)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
 
 
-                            DatabaseReference root =FirebaseDatabase.getInstance(connection).getReference().child("Users/"+FirebaseAuth.getInstance().getUid()+"/Ha nel carrello:");
+                            DatabaseReference root = FirebaseDatabase.getInstance(connection)
+                                    .getReference()
+                                    .child("Users/" + FirebaseAuth.getInstance().getUid() + "/Ha nel carrello:");
                             root.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapShot) {
 
                                     ArrayList<String> food = new ArrayList<>();
 
-                                    for( DataSnapshot datasnapShot : snapShot.getChildren()){
-                                        food.add( datasnapShot.getValue().toString());
+                                    for (DataSnapshot datasnapShot : snapShot.getChildren()) {
+                                        food.add(datasnapShot.getValue().toString());
                                     }
 
-                                    System.out.println("Ha nel carrello "+food);
+                                    System.out.println("Ha nel carrello " + food);
                                     food.clear();
 
-
                                 }
-
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
 
                                 }
                             });
-
-
-                                System.out.println("Aggiunto al Db");
-
-
-
-
-
+                            System.out.println("Aggiunto al Db");
                         } else {
 
                             System.out.println("Errore nel db");
@@ -81,20 +76,19 @@ public class FabToDb {
                         }
                     }
                 });
-
-
-
-
     }
 
 
-    public FabToDb(Map<String, Integer> selectedFood,String OldCarrello) {
+    public FabToDb(Map<String, ArrayList<Integer>> selectedFood, String OldCarrello) {
 
         this.selectedFood = selectedFood;
         Date now = new Date();
 
-        FirebaseDatabase.getInstance(connection).getReference("Users/"+FirebaseAuth.getInstance().getUid()+"/Ordini passati:")
-                .child(now.toString()).setValue(selectedFood).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance(connection)
+                .getReference("Users/" + FirebaseAuth.getInstance().getUid() + "/Ordini passati:")
+                .child(now.toString())
+                .setValue(selectedFood)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -109,18 +103,18 @@ public class FabToDb {
                 });
 
 
-        DatabaseReference root =FirebaseDatabase.getInstance(connection).getReference().child("Users/"+FirebaseAuth.getInstance().getUid()+"/Ordini passati:");
+        DatabaseReference root = FirebaseDatabase.getInstance(connection).getReference().child("Users/" + FirebaseAuth.getInstance().getUid() + "/Ordini passati:");
         root.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapShot) {
 
                 ArrayList<String> food = new ArrayList<>();
 
-                for( DataSnapshot datasnapShot : snapShot.getChildren()){
-                    food.add( datasnapShot.getValue().toString());
+                for (DataSnapshot datasnapShot : snapShot.getChildren()) {
+                    food.add(datasnapShot.getValue().toString());
                 }
 
-                System.out.println("Ha ordinato in passato:"+food);
+                System.out.println("Ha ordinato in passato:" + food);
                 food.clear();
 
             }
@@ -132,7 +126,6 @@ public class FabToDb {
             }
         });
     }
-
 
 
     private void updateUI(FirebaseUser user) {

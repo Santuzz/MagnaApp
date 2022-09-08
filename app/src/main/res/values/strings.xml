@@ -40,31 +40,99 @@
         <item>Insalata di gamberi</item>
         <item>Lumachine</item>
         <item>Montanare</item>
+        <item>Alici marinate</item>
+        <item>Insalatona</item>
+        <item>Carpaccio misto di pesce</item>
     </string-array>
+
+    <integer-array name="antipastiPrezzo">
+        <item>7</item>
+        <item>9</item>
+        <item>6</item>
+        <item>5</item>
+        <item>5</item>
+        <item>7</item>
+        <item>6</item>
+        <item>12</item>
+    </integer-array>
 
     <string-array name="primi">
         <item>Lasagne alla bolognese</item>
+        <item>Tagliatelle al ragù</item>
+        <item>Gramigna alla boscaiola</item>
         <item>Linguine allo scoglio</item>
-        <item>Trofie al pesto</item>
+        <item>Passatelli in brodo</item>
         <item>Tortellini in brodo</item>
+        <item>Tortellini alla panna</item>
+        <item>Trofie al pesto</item>
         <item>Gnocchi ai 4 formaggi</item>
     </string-array>
 
+    <integer-array name="primiPrezzo">
+        <item>10</item>
+        <item>13</item>
+        <item>9</item>
+        <item>16</item>
+        <item>12</item>
+        <item>12</item>
+        <item>11</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+
     <string-array name="secondi">
         <item>Fiorentina</item>
+        <item>Hamburger di scottona</item>
+        <item>Salsiccia ai ferri</item>
         <item>Grigliata mista</item>
-        <item>Orata al forno</item>
         <item>Rostbeef</item>
+        <item>Anatra al limone</item>
+        <item>Pollo arrosto</item>
+        <item>Filetto di salmone</item>
+        <item>Orata al forno</item>
         <item>Polpo e patate</item>
     </string-array>
 
-    <string-array name="bevande">
-        <item>Acqua naturale</item>
-        <item>Acqua gassata</item>
-        <item>Coca-cola</item>
-        <item>Vino rosso</item>
+    <integer-array name="secondiPrezzo">
+        <item>35</item>
+        <item>9</item>
+        <item>9</item>
+        <item>25</item>
+        <item>14</item>
+        <item>11</item>
+        <item>8</item>
+        <item>18</item>
+        <item>14</item>
+        <item>16</item>
+    </integer-array>
 
+    <string-array name="bevande">
+        <item>Acqua naturale 75cl</item>
+        <item>Acqua gassata 75cl</item>
+        <item>Coca-cola 33cl</item>
+        <item>Coca-cola zero 33cl</item>
+        <item>Fanta 33cl</item>
+        <item>Sprite 33cl</item>
+        <item>Birra piccola</item>
+        <item>Birra media</item>
+        <item>Birra grande</item>
+        <item>Calice di vino rosso </item>
+        <item>Calice di vino bianco </item>
     </string-array>
+
+    <integer-array name="bevandePrezzo">
+        <item>2</item>
+        <item>2</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+    </integer-array>
 
     <string-array name="dolci">
         <item>Pastiera</item>
@@ -72,7 +140,24 @@
         <item>Tiramisu</item>
         <item>Salame al cioccolato</item>
         <item>Torta barozzi</item>
+        <item>Semifreddo al limone</item>
+        <item>Profittelore</item>
+        <item>Brownie</item>
+        <item>macedonia</item>
+
     </string-array>
+
+    <integer-array name="dolciPrezzo">
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>5</item>
+        <item>4</item>
+    </integer-array>
 
     <array name="portate">
         <item>@array/antipasti</item>
@@ -82,13 +167,13 @@
         <item>@array/dolci</item>
     </array>
 
-    <string-array name="pastOrdersList">
-        <item>Ultimo</item>
-        <item>Penultimo</item>
-        <item>Terzultimo</item>
-        <item>…</item>
-        <item>Primo</item>
-    </string-array>
+    <array name="prezziPortate">
+        <item>@array/antipastiPrezzo</item>
+        <item>@array/primiPrezzo</item>
+        <item>@array/secondiPrezzo</item>
+        <item>@array/bevandePrezzo</item>
+        <item>@array/dolciPrezzo</item>
+    </array>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

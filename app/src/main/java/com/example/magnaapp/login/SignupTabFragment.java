@@ -72,7 +72,6 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                         if (taskSignIn.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
 
-
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                             CreateAccount userAc = new CreateAccount(email, password, username);
@@ -94,7 +93,6 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                                             }
                                         }
                                     });
-
                         } else {
                             // If sign in fails, display a message to the user
                             Toast.makeText(getActivity(), "Registrazione fallita!",
@@ -104,10 +102,7 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
                     }
                 });
         // [END create_user_with_email]
-
-
     }
-
 
     private void reload() {
     }
@@ -124,24 +119,19 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
         String cnf_psw = this.conf_psw.getText().toString().trim();
         if (email.isEmpty()) {
             Toast.makeText(getActivity(), "Inserisci un email valido!", Toast.LENGTH_SHORT).show();
-
         } else {
             if (username.isEmpty()) {
                 Toast.makeText(getActivity(), "Inserisci username!", Toast.LENGTH_SHORT).show();
-
             } else {
                 if (password.isEmpty()) {
                     Toast.makeText(getActivity(), "Inserisci password!", Toast.LENGTH_SHORT).show();
-
                 } else {
                     if (cnf_psw.isEmpty()) {
                         Toast.makeText(getActivity(), "Ripeti la password!", Toast.LENGTH_SHORT).show();
-
                     }
                     if (password.length() < 6) {
-                        Toast.makeText(getActivity(), "Password troppo corta!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Password troppo corta!", Toast.LENGTH_SHORT).show();
                     } else {
-
                         if (!cnf_psw.contentEquals(password)) {
                             Toast.makeText(getActivity(), "La password non combacia!", Toast.LENGTH_SHORT).show();
                         } else {
@@ -152,6 +142,4 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
             }
         }
     }
-
-
 }

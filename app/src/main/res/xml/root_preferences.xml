@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="Shipping information"
         app:icon="@drawable/ic_baseline_delivery_dining_24">
@@ -41,6 +42,16 @@
         <SwitchPreferenceCompat
             app:key="theme"
             app:title="Dark theme" />
+
+        <Preference
+            android:title="Exit"
+            android:layout="@layout/preference_exit">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.example.magnaapp"
+                android:targetClass="com.example.magnaapp.login.LoginActivity"
+                />
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory

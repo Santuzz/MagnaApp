@@ -32,7 +32,20 @@ public class PastOrdersFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_past_orders, container, false);
 
+        //TODO controllarne l'utilità
+        Map<String, Integer> foodQuantity;
+        DatabaseReference root =FirebaseDatabase.getInstance().getReference().child("Ha nel carrello");
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         return view;

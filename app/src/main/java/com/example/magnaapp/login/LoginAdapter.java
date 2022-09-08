@@ -8,6 +8,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+/**
+ * Adapter utilizzato nel tabLayout della LoginActivity
+ */
+
 public class LoginAdapter extends FragmentStateAdapter {
 
     public LoginAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {

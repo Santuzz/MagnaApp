@@ -9,6 +9,11 @@ import android.widget.TextView;
 import com.example.magnaapp.R;
 import com.google.android.material.tabs.TabLayout;
 
+/**
+ * activity da cui parte l'app, è composta da un tabLayout in cui da una parte si ha la fase di
+ * login e dall'altra quella di signup
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     TabLayout tabLayout;

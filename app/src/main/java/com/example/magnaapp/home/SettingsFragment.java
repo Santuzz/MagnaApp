@@ -31,6 +31,4 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         super.onViewCreated(view, savedInstanceState);
 
     }
-
-
 }

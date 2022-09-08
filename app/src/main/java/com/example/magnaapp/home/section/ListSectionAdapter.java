@@ -15,6 +15,7 @@ import com.example.magnaapp.R;
 import com.example.magnaapp.home.RecyclerViewInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,13 +23,15 @@ import java.util.Map;
 public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.MyViewHolder> implements RecyclerViewInterface {
 
     private final RecyclerViewInterface recyclerViewInterface;
-    String[] list;
-    private static Map<String, Integer> selectedFood;
+    String[]  listPortata;
+    int[] listPrezzo;
+    private static Map<String, ArrayList<Integer>> selectedFood;
 
-    public ListSectionAdapter(RecyclerViewInterface recyclerViewInterface, String[] list) {
+    public ListSectionAdapter(RecyclerViewInterface recyclerViewInterface, String[] listPortata, int[] listPrezzo) {
         this.recyclerViewInterface = recyclerViewInterface;
-        this.list = list;
-        selectedFood = new HashMap<String, Integer>();
+        this.listPortata = listPortata;
+        this.listPrezzo = listPrezzo;
+        selectedFood = new HashMap<String, ArrayList<Integer>>();
     }
 
     @NonNull
@@ -40,15 +43,18 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ListSectionAdapter.MyViewHolder holder, int position) {
-        holder.text.setText(list[position]);
+        holder.text.setText(listPortata[position]);
+        Integer pos = (Integer)listPrezzo[position];
+        holder.textPrezzo.setText(pos.toString());
         holder.number.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
                 // This will be the text from the EditText
-                Integer value = Integer.parseInt(s.toString().trim());
                 String key = holder.number.getText().toString().trim();
-
-                selectedFood.put(list[holder.getBindingAdapterPosition()],Integer.parseInt(key));
+                ArrayList<Integer> value =  new ArrayList<>();
+                value.add(Integer.parseInt(s.toString().trim()));
+                value.add(listPrezzo[holder.getBindingAdapterPosition()]);
+                selectedFood.put(listPortata[holder.getBindingAdapterPosition()],value);
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -59,12 +65,13 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
 
     @Override
     public int getItemCount() {
-        return list.length;
+        return listPortata.length;
     }
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text;
+        TextView textPrezzo;
         FloatingActionButton fabAdd, fabRemove;
         EditText number;
 
@@ -72,6 +79,8 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
             super(itemView);
 
             text = itemView.findViewById(R.id.text);
+            textPrezzo = itemView.findViewById(R.id.textPrezzo);
+
             fabAdd = itemView.findViewById(R.id.fabAdd);
             fabRemove = itemView.findViewById(R.id.fabRemove);
             number = itemView.findViewById(R.id.number);
@@ -97,7 +106,7 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
         }
     }
 
-    public static Map<String, Integer> getData(){
+    public static Map<String, ArrayList<Integer>> getData(){
         return selectedFood;
     }
 
