@@ -3,7 +3,6 @@ package com.example.magnaapp.home;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,20 +18,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Collection;
 import java.util.Map;
-import java.util.Set;
 
 
 public class PastOrdersFragment extends Fragment {
-
+    /*
+    RecyclerView recyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_past_orders, container, false);
 
-        //TODO controllarne l'utilità
+        //TODO leggere dal db
         Map<String, Integer> foodQuantity;
         DatabaseReference root =FirebaseDatabase.getInstance().getReference().child("Ha nel carrello");
         root.addValueEventListener(new ValueEventListener() {
@@ -47,7 +45,12 @@ public class PastOrdersFragment extends Fragment {
             }
         });
 
-
+        recyclerView = view.findViewById(R.id.recyclerViewMenu);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        //TODO cambiare l'array con quello che leggiamo dal db
+        recyclerView.setAdapter(new ListPastAdapter((RecyclerViewInterface) this, getResources().getStringArray(R.array.menuList)));
         return view;
     }
+
+     */
 }
