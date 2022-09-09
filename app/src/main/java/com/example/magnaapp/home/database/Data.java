@@ -1,9 +1,6 @@
-package com.example.magnaapp.home;
+package com.example.magnaapp.home.database;
 
 import androidx.annotation.NonNull;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 public class Data {
     private String plate;
@@ -53,4 +50,5 @@ public class Data {
     public String toString(){
         return "{"+ "Plate: " + this.getPlate() + ", "+ "Quantity: " + this.getQuantity() + ", "+ "Price: " + this.getPrice() + "}";
     }
+
 }

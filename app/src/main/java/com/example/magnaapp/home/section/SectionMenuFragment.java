@@ -1,5 +1,6 @@
 package com.example.magnaapp.home.section;
 
+import android.app.Activity;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 
@@ -12,14 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.magnaapp.R;
-import com.example.magnaapp.home.Data;
+import com.example.magnaapp.home.database.Data;
 import com.example.magnaapp.home.RecyclerViewInterface;
-import com.example.magnaapp.home.section.ListSectionAdapter;
+import com.example.magnaapp.home.database.FabToDb;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 
 public class SectionMenuFragment extends Fragment implements View.OnClickListener, RecyclerViewInterface{
@@ -87,8 +87,9 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
                 }
                  */
                 foodQuantity.removeIf( name -> name.getQuantity()==0);
+
                 if(!foodQuantity.isEmpty()){
-                    new FabToDb(foodQuantity,"OldOrders");
+                    //new FabToDb(foodQuantity,"OldOrders");
                     new FabToDb(foodQuantity);
                 }
         }
@@ -98,4 +99,5 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
     public void onItemClick(int position) {
 
     }
+
 }

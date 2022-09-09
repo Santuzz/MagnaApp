@@ -12,14 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.magnaapp.R;
-import com.example.magnaapp.home.Data;
+import com.example.magnaapp.home.database.Data;
 import com.example.magnaapp.home.RecyclerViewInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.MyViewHolder> implements RecyclerViewInterface {
 
@@ -34,7 +31,7 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
         this.listPortata = listPortata;
         this.listPrezzo = listPrezzo;
         //selectedFood = new HashMap<String, ArrayList<Integer>>();
-        selectedFood = new ArrayList<Data>();
+        selectedFood = new ArrayList<>();
 
     }
 
@@ -53,17 +50,36 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
         holder.number.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
-                // This will be the text from the EditText
-                String key = holder.number.getText().toString().trim();
+                // Aggiorno l'arraylist che dovrà essere inviato al db ogni volta che viene aggiornata la quantità
+                //String key = holder.number.getText().toString().trim();
+                String plate = listPortata[holder.getBindingAdapterPosition()];
                 int quantity = Integer.parseInt(s.toString().trim());
                 int price = listPrezzo[holder.getBindingAdapterPosition()];
+                boolean setted = false;
+
                 /*
                 ArrayList<Integer> value =  new ArrayList<>();
                 value.add(quantity);
                 value.add(price);
                 selectedFood.put(listPortata[holder.getBindingAdapterPosition()],value);
                 */
-                selectedFood.add(new Data(key,quantity, price));
+
+                //controllo che il piatto non sia già stato inserito, nel caso sostituisco la quantità
+                for (int j = 0; j < selectedFood.size(); j++) {
+                    if(selectedFood.get(j).getPlate().equals(plate)) {
+                        selectedFood.get(j).setQuantity(quantity);
+                        setted = true;
+                    }
+                }
+                //aggiungo il piatto solo se non è stato trovato il piatto nella lista
+                if(!setted){
+                    selectedFood.add(new Data(plate,quantity, price));
+                }
+
+                for (int i = 0; i < selectedFood.size(); i++) {
+                    System.out.println(selectedFood.get(i));
+
+                }
 
             }
 
