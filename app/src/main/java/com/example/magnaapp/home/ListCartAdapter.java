@@ -9,11 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.magnaapp.R;
+import com.example.magnaapp.home.database.Data;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import com.example.magnaapp.home.database.DbToCart;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Adapter utilizzato per visualizzare nel carrello i cibi selezionati dal menu che si vogliono acquistare
@@ -22,11 +23,11 @@ import java.util.List;
 public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyViewHolder> implements RecyclerViewInterface {
 
     private final RecyclerViewInterface recyclerViewInterface;
-    String[] list;
+    ArrayList<Data> dataReceived;
 
-    public ListCartAdapter(RecyclerViewInterface recyclerViewInterface, String[] list) {
+    public ListCartAdapter(RecyclerViewInterface recyclerViewInterface, ArrayList<Data> dataReceived) {
         this.recyclerViewInterface = recyclerViewInterface;
-        this.list = list;
+        this.dataReceived = dataReceived;
     }
 
     @NonNull
@@ -38,24 +39,21 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        //TODO da modificare inserendo i dati ricevuti dal db
-        holder.textOrdinato.setText(list[position]);
-        holder.textPrezzoCart.setText("10");
-        holder.textQuantity.setText("2");
-
+        System.out.println(dataReceived.get(position).getPlate());
+        holder.textOrdinato.setText(dataReceived.get(position).getPlate());
+        holder.textPrezzoCart.setText(String.valueOf(dataReceived.get(position).getPrice()));
+        holder.textQuantity.setText(String.valueOf(dataReceived.get(position).getQuantity()));
     }
 
     @Override
     public int getItemCount() {
-        return list.length;
+        return dataReceived.size();
     }
 
     //rimossa classe statica
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textOrdinato, textPrezzoCart, textQuantity;
         FloatingActionButton fabRemoveItem;
-
-
 
         public MyViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
@@ -66,9 +64,7 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
 
             fabRemoveItem = itemView.findViewById(R.id.fabRemoveItem);
 
-
             fabRemoveItem.setOnClickListener(new View.OnClickListener() {
-
 
                 @Override
                 public void onClick(View view) {
@@ -79,18 +75,14 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
                             recyclerViewInterface.onItemClick(pos);
                         }
                     }
-                    //TODO rimuove la row dalla recyclerView
                     ListCartAdapter.this.removeItem(getAbsoluteAdapterPosition());
-
                 }
             });
         }
     }
 
     public void removeItem(int position) {
-        List<String> list = new ArrayList<String>(Arrays.asList(this.list));
-        list.remove(position);
-        this.list = list.toArray(new String[0]);
+        dataReceived.remove(position);
         notifyItemRemoved(position);
     }
 

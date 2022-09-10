@@ -46,9 +46,9 @@ public class Data {
         this.price = price;
     }
 
+
     @NonNull
     public String toString(){
         return "{"+ "Plate: " + this.getPlate() + ", "+ "Quantity: " + this.getQuantity() + ", "+ "Price: " + this.getPrice() + "}";
     }
-
 }

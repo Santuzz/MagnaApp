@@ -1,7 +1,10 @@
 package com.example.magnaapp.home;
 
+import static com.example.magnaapp.login.LoginActivity.connection;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,14 +14,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.magnaapp.R;
+import com.example.magnaapp.home.database.Data;
+import com.example.magnaapp.home.database.DbToCart;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 
 public class ShoppingFragment extends Fragment implements View.OnClickListener, RecyclerViewInterface {
 
     RecyclerView recyclerView;
     ExtendedFloatingActionButton fabConfermaOrdine;
-    String[] array;
+    ArrayList<Data> dataReceived;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,22 +39,25 @@ public class ShoppingFragment extends Fragment implements View.OnClickListener, 
         // Inflate the layout for this fragment
         View view = (View) inflater.inflate(R.layout.fragment_shopping, container, false);
 
-        //TODO Leggo i dati dal db con le voci da aggiungere al menu e le inserisco nell'array
-        array = getResources().getStringArray(R.array.antipasti);
+        dataReceived = new ArrayList<>();
+        //prova aggiunta
+        Data data = new Data("prova", 1,1);
+        dataReceived.add(data);
+        DbToCart cart = new DbToCart();
+        cart.readToDb();
+        System.out.println("=========");
+        System.out.println(cart.getFinalReceived());
 
-        fabConfermaOrdine= view.findViewById(R.id.fabConfermaOrdine);
-
+        fabConfermaOrdine = view.findViewById(R.id.fabConfermaOrdine);
         recyclerView = view.findViewById(R.id.recyclerViewStorage);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        //TODO passare al posto dell'array il pacchetto di dati ricevuto dal db
-        recyclerView.setAdapter(new ListCartAdapter((RecyclerViewInterface) this, array));
+        recyclerView.setAdapter(new ListCartAdapter((RecyclerViewInterface) this, dataReceived));
 
         return view;
     }
 
     @Override
     public void onClick(View view) {
-        //TODO invia tutti i piatti ordinati al db e verrà aggiunto allo storico degli ordini (pastOrderFragment)
     }
 
     @Override
