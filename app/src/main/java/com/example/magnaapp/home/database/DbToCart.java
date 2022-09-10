@@ -4,7 +4,11 @@ import static com.example.magnaapp.login.LoginActivity.connection;
 
 import androidx.annotation.NonNull;
 
+import com.example.magnaapp.home.ListCartAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,6 +20,9 @@ import java.util.ArrayList;
 public class DbToCart {
 
     ArrayList<Data> finalReceived;
+    private DatabaseReference mRef = FirebaseDatabase.getInstance(connection)
+            .getReference().child("Users/" + FirebaseAuth.getInstance().getUid() + "/Ha nel carrello:");
+
 
     public DbToCart() {
         this.finalReceived = new ArrayList<>();
@@ -24,8 +31,6 @@ public class DbToCart {
     public void readToDb() {
         ArrayList<Data> dataReceived = new ArrayList<>();
 
-        DatabaseReference mRef = FirebaseDatabase.getInstance(connection)
-                .getReference().child("Users/" + FirebaseAuth.getInstance().getUid() + "/Ha nel carrello:");
 
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -36,8 +41,8 @@ public class DbToCart {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             dataReceived.add(snapshot.getValue(Data.class));
+                            finalReceived = new ArrayList<>();
                             finalReceived.addAll(dataReceived);
-                            //TODO riuscire a passare dataReceived al ListCartAdapter che costruisce la RecyclerView
                         }
 
                         @Override
@@ -55,7 +60,30 @@ public class DbToCart {
         });
     }
 
+    public void deleteToDb(){
+        mRef.removeValue();
+    }
+
+    public void confirmToDb(){
+        FirebaseDatabase.getInstance(connection)
+                .getReference().child("Users/" + FirebaseAuth.getInstance().getUid() + "/Ordini confermati").push().setValue(finalReceived).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    deleteToDb();
+                    System.out.println("Aggiunto nel db");
+                } else {
+                    System.out.println("Errore nel db");
+                    updateUI(null);
+                }
+            }
+        });
+    }
+
     public ArrayList<Data> getFinalReceived() {
         return finalReceived;
+    }
+    private void updateUI(FirebaseUser user) {
+
     }
 }

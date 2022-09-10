@@ -75,6 +75,7 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
                             recyclerViewInterface.onItemClick(pos);
                         }
                     }
+
                     ListCartAdapter.this.removeItem(getAbsoluteAdapterPosition());
                 }
             });

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:text="Confirm Order"
+        android:text="Confirm"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:layout_marginBottom="10dp"
@@ -33,9 +33,47 @@
         app:iconGravity="textStart"
         app:iconTint="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewStorage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fabRefresh"
+        app:layout_constraintStart_toEndOf="@id/fabClean"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="refresh"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        app:borderWidth="20dp"
+        android:backgroundTint="@color/ForestGreen"
+        app:icon="@drawable/ic_baseline_refresh_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fabConfermaOrdine"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewStorage"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabClean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="clean"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        app:borderWidth="20dp"
+        android:backgroundTint="@color/DarkRed"
+        app:icon="@drawable/ic_baseline_delete_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/fabConfermaOrdine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewStorage"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

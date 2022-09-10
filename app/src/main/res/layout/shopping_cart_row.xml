@@ -97,12 +97,13 @@
                 android:focusable="true"
                 android:scaleType="center"
                 app:fabCustomSize="40dp"
+                app:tint="@color/white"
+                app:maxImageSize="25dp"
+                app:srcCompat="@drawable/ic_baseline_delete_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:maxImageSize="25dp"
-                app:srcCompat="@drawable/ic_baseline_delete_24"
-                app:tint="@color/white" />
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

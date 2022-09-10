@@ -42,7 +42,7 @@
         <item>Montanare</item>
         <item>Alici marinate</item>
         <item>Insalatona</item>
-        <item>Carpaccio misto di pesce</item>
+        <item>Carpaccio di pesce</item>
     </string-array>
 
     <integer-array name="antipastiPrezzo">
@@ -57,9 +57,9 @@
     </integer-array>
 
     <string-array name="primi">
-        <item>Lasagne alla bolognese</item>
+        <item>Lasagne</item>
         <item>Tagliatelle al ragù</item>
-        <item>Gramigna alla boscaiola</item>
+        <item>Gramigna al sugo</item>
         <item>Linguine allo scoglio</item>
         <item>Passatelli in brodo</item>
         <item>Tortellini in brodo</item>
@@ -82,7 +82,7 @@
 
     <string-array name="secondi">
         <item>Fiorentina</item>
-        <item>Hamburger di scottona</item>
+        <item>Hamburger di manzo</item>
         <item>Salsiccia ai ferri</item>
         <item>Grigliata mista</item>
         <item>Rostbeef</item>

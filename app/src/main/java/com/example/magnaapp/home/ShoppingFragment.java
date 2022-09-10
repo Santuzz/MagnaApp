@@ -30,8 +30,7 @@ import java.util.ArrayList;
 public class ShoppingFragment extends Fragment implements View.OnClickListener, RecyclerViewInterface {
 
     RecyclerView recyclerView;
-    ExtendedFloatingActionButton fabConfermaOrdine;
-    ArrayList<Data> dataReceived;
+    ExtendedFloatingActionButton fabConfermaOrdine, fabClean, fabRefresh;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,20 +38,39 @@ public class ShoppingFragment extends Fragment implements View.OnClickListener, 
         // Inflate the layout for this fragment
         View view = (View) inflater.inflate(R.layout.fragment_shopping, container, false);
 
-        dataReceived = new ArrayList<>();
-        //prova aggiunta
-        Data data = new Data("prova", 1,1);
-        dataReceived.add(data);
         DbToCart cart = new DbToCart();
         cart.readToDb();
-        System.out.println("=========");
-        System.out.println(cart.getFinalReceived());
 
         fabConfermaOrdine = view.findViewById(R.id.fabConfermaOrdine);
+        fabClean = view.findViewById(R.id.fabClean);
+        fabRefresh = view.findViewById(R.id.fabRefresh);
+
         recyclerView = view.findViewById(R.id.recyclerViewStorage);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(new ListCartAdapter((RecyclerViewInterface) this, dataReceived));
+        recyclerView.setAdapter(new ListCartAdapter((RecyclerViewInterface) this, new ArrayList<Data>()));
 
+        fabRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setAdapter(new ListCartAdapter((RecyclerViewInterface) ShoppingFragment.this, cart.getFinalReceived()));
+            }
+        });
+
+        fabClean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setAdapter(new ListCartAdapter((RecyclerViewInterface) ShoppingFragment.this, new ArrayList<Data>()));
+                cart.deleteToDb();
+            }
+        });
+
+        fabConfermaOrdine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setAdapter(new ListCartAdapter((RecyclerViewInterface) ShoppingFragment.this, new ArrayList<Data>()));
+                cart.confirmToDb();
+            }
+        });
         return view;
     }
 
