@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.magnaapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Adapter utilizzato per visualizzare nel carrello i cibi selezionati dal menu che si vogliono acquistare
  */
@@ -46,9 +50,11 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
         return list.length;
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    //rimossa classe statica
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textOrdinato, textPrezzoCart, textQuantity;
         FloatingActionButton fabRemoveItem;
+
 
 
         public MyViewHolder(View itemView, RecyclerViewInterface recyclerViewInterface) {
@@ -63,6 +69,7 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
 
             fabRemoveItem.setOnClickListener(new View.OnClickListener() {
 
+
                 @Override
                 public void onClick(View view) {
                     if (recyclerViewInterface != null) {
@@ -73,12 +80,18 @@ public class ListCartAdapter extends RecyclerView.Adapter<ListCartAdapter.MyView
                         }
                     }
                     //TODO rimuove la row dalla recyclerView
+                    ListCartAdapter.this.removeItem(getAbsoluteAdapterPosition());
+
                 }
             });
-
-
-
         }
+    }
+
+    public void removeItem(int position) {
+        List<String> list = new ArrayList<String>(Arrays.asList(this.list));
+        list.remove(position);
+        this.list = list.toArray(new String[0]);
+        notifyItemRemoved(position);
     }
 
     @Override
