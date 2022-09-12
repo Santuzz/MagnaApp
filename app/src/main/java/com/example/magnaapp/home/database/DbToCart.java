@@ -17,6 +17,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * classe utilizzata per interagire con il DB
+ * Il metodo readToDb legge i valori contenuti nel db che sono stati precedentemente scritti usando FabToDb
+ * Il metodo confirmtoDb completa l'ordine passando il contenuto del carrello negli ordini passati e svuota il carrello
+ * il metodo deleteToDb svuota il carrello corrente
+ */
 public class DbToCart {
 
     ArrayList<Data> finalReceived;

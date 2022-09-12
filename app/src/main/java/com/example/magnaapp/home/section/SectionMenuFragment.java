@@ -21,7 +21,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-
+/**
+ * Fragment che si apre al click di una row della RecyclerView del menu e contiene la recyclerView
+ * con tutti i piatti da aggiungere al carrello
+ */
 public class SectionMenuFragment extends Fragment implements View.OnClickListener, RecyclerViewInterface{
     RecyclerView recyclerView;
     ExtendedFloatingActionButton fabOrdina;
@@ -63,7 +66,6 @@ public class SectionMenuFragment extends Fragment implements View.OnClickListene
     }
 
     /**
-     *
      * Al click del button per aggiungere al cartello si ottiene la mappa contenente tutti i cibi
      * con la quantità selezionata dall'utente e si tolgono quelli con quantità pari a zero.
      * Per finire si chiama la classe per mandare i dati sul database di firebase

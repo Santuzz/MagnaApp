@@ -2,6 +2,10 @@ package com.example.magnaapp.home.database;
 
 import androidx.annotation.NonNull;
 
+/**
+ * classe utilizzata per formattare i dati inviati al db in modo da poterli leggere correttamente
+ * Ad ogni piatto è associata una quantità e il prezzo
+ */
 public class Data {
     private String plate;
     private int quantity;

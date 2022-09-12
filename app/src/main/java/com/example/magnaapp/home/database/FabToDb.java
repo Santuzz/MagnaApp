@@ -14,6 +14,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+/**
+ * Classe per aggiungere i piatti selezionati al al carrello sul db.
+ * Per ottenere una formattazione che poi possa essere letta si invia un piatto alla volta utilizzando
+ * push() per evitare l'overwriting
+ */
+
 public class FabToDb {
 
     ArrayList<Data> dataSend;
@@ -24,10 +30,9 @@ public class FabToDb {
     public FabToDb(ArrayList<Data> dataToSend) {
         this.dataSend = dataToSend;
 
-        //invio al db i prodotti selezionati (ovvero quelli con quantità diversa da zero) uno alla volta con la push
         for (int i = 0; i < dataSend.size(); i++) {
 
-                    mRef.push().setValue(dataSend.get(i))
+            mRef.push().setValue(dataSend.get(i))
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

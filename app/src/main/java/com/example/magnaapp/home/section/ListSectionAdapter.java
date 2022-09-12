@@ -18,19 +18,20 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+/**
+ * adapter utilizzato per la creazione della recyclerView che mostra i piatti di ogni sezione del menu (antipasti, primi, ...)
+ */
 public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.MyViewHolder> implements RecyclerViewInterface {
 
     private final RecyclerViewInterface recyclerViewInterface;
-    String[]  listPortata;
+    String[] listPortata;
     int[] listPrezzo;
-    //private static Map<String, ArrayList<Integer>> selectedFood;
     private static ArrayList<Data> selectedFood;
 
     public ListSectionAdapter(RecyclerViewInterface recyclerViewInterface, String[] listPortata, int[] listPrezzo) {
         this.recyclerViewInterface = recyclerViewInterface;
         this.listPortata = listPortata;
         this.listPrezzo = listPrezzo;
-        //selectedFood = new HashMap<String, ArrayList<Integer>>();
         selectedFood = new ArrayList<>();
 
     }
@@ -45,47 +46,35 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
     @Override
     public void onBindViewHolder(@NonNull ListSectionAdapter.MyViewHolder holder, int position) {
         holder.text.setText(listPortata[position]);
-        Integer pos = (Integer)listPrezzo[position];
+        Integer pos = (Integer) listPrezzo[position];
         holder.textPrezzo.setText(pos.toString());
         holder.number.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
-                // Aggiorno l'arraylist che dovrà essere inviato al db ogni volta che viene aggiornata la quantità
-                //String key = holder.number.getText().toString().trim();
                 String plate = listPortata[holder.getBindingAdapterPosition()];
                 int quantity = Integer.parseInt(s.toString().trim());
                 int price = listPrezzo[holder.getBindingAdapterPosition()];
                 boolean setted = false;
 
-                /*
-                ArrayList<Integer> value =  new ArrayList<>();
-                value.add(quantity);
-                value.add(price);
-                selectedFood.put(listPortata[holder.getBindingAdapterPosition()],value);
-                */
-
                 //controllo che il piatto non sia già stato inserito, nel caso sostituisco la quantità
                 for (int j = 0; j < selectedFood.size(); j++) {
-                    if(selectedFood.get(j).getPlate().equals(plate)) {
+                    if (selectedFood.get(j).getPlate().equals(plate)) {
                         selectedFood.get(j).setQuantity(quantity);
                         setted = true;
                     }
                 }
+
                 //aggiungo il piatto solo se non è stato trovato il piatto nella lista
-                if(!setted){
-                    selectedFood.add(new Data(plate,quantity, price));
+                if (!setted) {
+                    selectedFood.add(new Data(plate, quantity, price));
                 }
-
-                for (int i = 0; i < selectedFood.size(); i++) {
-                    System.out.println(selectedFood.get(i));
-
-                }
-
             }
 
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
     }
 
@@ -93,7 +82,6 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
     public int getItemCount() {
         return listPortata.length;
     }
-
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView text;
@@ -112,7 +100,6 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
             number = itemView.findViewById(R.id.number);
 
             fabAdd.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View view) {
                     int num = Integer.parseInt(number.getText().toString().trim());
@@ -132,13 +119,7 @@ public class ListSectionAdapter extends RecyclerView.Adapter<ListSectionAdapter.
         }
     }
 
-    /*
-    public static Map<String, ArrayList<Integer>> getData(){
-        return selectedFood;
-    }
-     */
-
-    public static ArrayList<Data> getData(){
+    public static ArrayList<Data> getData() {
         return selectedFood;
     }
 
