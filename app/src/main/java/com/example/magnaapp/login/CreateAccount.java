@@ -1,9 +1,6 @@
 package com.example.magnaapp.login;
 
 public class CreateAccount {
-
-
-
     public String email, password, username;
 
     public CreateAccount() {

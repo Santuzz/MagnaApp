@@ -1,0 +1,29 @@
+Bug Fixing:
+
+- Nel signupTabFragment non si riposizionano gli elementi quando si apre la tastiera
+
+- Quando apro il sectionMenuFragment non funziona più la navigazione della navigationBottomView
+Error: I/FragmentNavigator: Ignoring navigate() call: FragmentManager has already saved its state
+
+- Clicckando fabRefresh nel shoppingFragment dopo aver svuotato il carrello l'app crasha
+Error: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String com.example.magnaapp.home.database.Data.getPlate()' on a null object reference
+               at com.example.magnaapp.home.ListCartAdapter.onBindViewHolder(ListCartAdapter.java:42)
+               at com.example.magnaapp.home.ListCartAdapter.onBindViewHolder(ListCartAdapter.java:23)
+
+- Quando si aggiunge un prodotto al carrello già precedentemente aggiunto vengono visti come prodotti diversi nella visualizzazione del carrello
+Possibile soluzione: creare un set e sommare le quantità degli stessi piatti
+
+Prossime implementazioni:
+
+- textView forget_psw nel loginTabFragment per quando un'utente si dimentica la password
+
+- imageView google, facebook, twitter e instagram per loggare tramite social
+
+- Menu completo disponibile sul database e non in locale
+
+- fabRemoveItem nella shopping_cart_row che elimina il singolo piatto dal carrello
+    siccome al momento viene eliminato solo dalla recyclerview e non dal database
+
+- Tutte le preferenze nel settingFragment
+
+- Aggiungere animazioni alla creazione di nuovi fragment

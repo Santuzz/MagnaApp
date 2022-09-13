@@ -111,6 +111,9 @@ public class SignupTabFragment extends Fragment implements View.OnClickListener 
 
     }
 
+    /**
+     * Al click del pulsante signup si verifica che tutti i valori impostati rispettino i requisiti minimi
+     */
     @Override
     public void onClick(View view) {
         String email = this.email.getText().toString().trim();

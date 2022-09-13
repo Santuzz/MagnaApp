@@ -66,16 +66,6 @@ public class LoginTabFragment extends Fragment implements View.OnClickListener {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        /*
-        if (currentUser != null) {
-
-            String Bentornato = "Bentornato " + currentUser.getEmail().toString() + "\n\t\t\t\t\t\taccedi di nuovo!";
-            Toast.makeText(getActivity(), Bentornato, Toast.LENGTH_LONG).show();
-            updateUI(null);
-
-        }
-
-         */
     }
     // [END on_start_check_user]
 
@@ -99,19 +89,16 @@ public class LoginTabFragment extends Fragment implements View.OnClickListener {
                             Toast.makeText(getActivity(), "email o password errati!",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
-
                         }
                     }
                 });
         // [END create_user_with_email]
-
     }
 
     //TODO accedere con google (optional)
     private void accedi() {
 
     }
-
 
     private void reload() {
     }
@@ -124,14 +111,11 @@ public class LoginTabFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         String email = this.username.getText().toString().trim();
         String password = this.password.getText().toString().trim();
-        String username = this.username.getText().toString().trim();
-
 
         switch (view.getId()) {
             case R.id.login:
                 if (email.isEmpty()) {
                     Toast.makeText(getActivity(), "Inserisci username!", Toast.LENGTH_SHORT).show();
-
                 } else {
                     if (password.isEmpty()) {
                         Toast.makeText(getActivity(), "Inserisci password!", Toast.LENGTH_SHORT).show();
@@ -145,14 +129,10 @@ public class LoginTabFragment extends Fragment implements View.OnClickListener {
             case R.id.forget_psw:
             {
                 //TODO richiamare pagina resetpassword.xml
-
                 resetPassword(email);
             }
-
             */
         }
-
-
     }
 
     //TODO per reset psw con codice tramite email
@@ -167,7 +147,6 @@ public class LoginTabFragment extends Fragment implements View.OnClickListener {
                         if (task.isSuccessful()) {
                             Log.d("success", "Email inviato!");
                             Toast.makeText(getActivity(), "Email ripristino password inviato!", Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
